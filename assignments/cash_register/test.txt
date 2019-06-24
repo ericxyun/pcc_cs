@@ -5,17 +5,14 @@ using namespace std;
 int calc_change(double change)
 {
 	int dollars = 0;
-	float cents = 0;
+	int cents = 0;
 	int quarters = 0;
 	int dimes = 0;
 	int nickels = 0;
 	int pennies= 0;
 
 	dollars = static_cast<int>(change);
-	dollars = change;
-	cout << (change - dollars) << endl;
-	cents = change - dollars;
-	cents = cents * 100;
+	cents = (change - dollars) * 100;
 	cout << "Change: " << cents << endl;
 	while (cents >= 25)
 	{
