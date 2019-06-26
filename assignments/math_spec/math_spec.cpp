@@ -252,9 +252,7 @@ int main()
 		pythagorean();
 
 	else 
-	{
 		cout << "Error: Operation not supported." << endl;
-	}
 	return 0;
 }
 
