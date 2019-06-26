@@ -64,7 +64,6 @@ void user_input(int num)
 		i++;
 	}
 	while (i < num);
-
 }
 
 // function to output error when trying to square root a negative number
@@ -91,7 +90,6 @@ void addition()
 	cout << "Equation: " << num1 << " + " << num2 << endl;
 	cout << endl;
 	cout << "Results: " << sum << endl;
-
 }
 
 // subtracts two floats
@@ -165,7 +163,6 @@ void sqrt()
 		root = sqrt(num1);
 		cout << "Results: " << root << endl;
 	}	
-
 }
 
 // quadratic function
@@ -216,7 +213,6 @@ void pythagorean()
 	     << "^2 + " << num2 << "^2)" << endl;
 	cout << endl;
 	cout << "Results: " << hyp << endl;
-		
 }
 
 int main()
@@ -229,30 +225,23 @@ int main()
 	// 			    based on operation condition
 	if (operation == "addition")
 		addition();
-
 	else if (operation == "subtraction")
 		subtraction();
-	
 	else if (operation == "division")
 		division();
-	
 	else if (operation == "multiplication")
 		multiplication();
-	
 	else if (operation == "fabs")
 		fabs();
-	
 	else if (operation == "sqrt")
 		sqrt();
-	
 	else if (operation == "quadratic")
 		quadratic();
-	
 	else if (operation == "pythagorean")
 		pythagorean();
-
 	else 
 		cout << "Error: Operation not supported." << endl;
+
 	return 0;
 }
 
