@@ -41,22 +41,24 @@ float num1;
 float num2;
 float num3;
 float num4;
-float input_array[4] = {};
+float input_array[4] = {};	//empty array to store user input values
 string operation;
 
-// function to get user input
+// function to get user input accounting for the number of variables needed.
 void user_input(int num)
 {
-	int i = 0;
+	int i = 0;	// initializing the counter
 
+	// storing user input requests in an array
 	string get_input[4] = {"Enter your first number: ",
 			       "Enter your second number: ",
 			       "Enter your third number: ",
 			       "Enter your fourth number: "};
 
+	// do-while loop stops at maximum num of variables needed.
 	do
 	{
-		cout << get_input[i];
+		cout << get_input[i];	
 		cin >> input_array[i];
 		cout << endl;
 		i++;
