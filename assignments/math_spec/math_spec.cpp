@@ -19,7 +19,7 @@ using namespace std;
  * 	user's inputs
  *--------------------------------------------------------------------------
  * INPUT:
- * 	operation:      types of operation
+ * 	operation: types of operation
  * 		- addition
  * 		- subtraction
  * 		- division
