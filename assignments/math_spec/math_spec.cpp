@@ -15,11 +15,23 @@ using namespace std;
  * MATHEMATICS SPECIFICATIONS
  *
  *--------------------------------------------------------------------------
- * Program Description
+ * This program performs various types of mathematical operations given the
+ * 	user's inputs
  *--------------------------------------------------------------------------
  * INPUT:
+ * 	operation:      types of operation
+ * 		- addition
+ * 		- subtraction
+ * 		- division
+ * 		- multiplication
+ * 		- fabs (floating point absolute value)
+ * 		- sqrt
+ * 		- quadratic
+ * 		- pythagorean
+ * 	input_array[4]: takes up to four user inputs as floats
  *
  * OUTPUT:
+ * 	num[1-4]: variables to to make calculations
  *
  *--------------------------------------------------------------------------
  ***************************************************************************/
