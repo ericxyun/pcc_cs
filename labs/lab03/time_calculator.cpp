@@ -40,16 +40,16 @@ int main()
 		int hours;
 		int days;
 			
-		// INPUT --
+		// INPUT -- user inputs number of seconds 
 		cout << "Enter a number of seconds: " << endl;
 		cin >> sec;
 		
-		// PROCESSING --
+		// PROCESSING -- calculates min, hours, days
 		min = sec / 60;
 		hours = sec / 3600;
 		days =  sec / 86400;
 	
-		// OUTPUT -- 
+		// OUTPUT -- prints the number of min, hours, or days.
 		// minutes
 		if (sec >= 60 && sec < 3600)
 		{
