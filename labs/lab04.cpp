@@ -4,8 +4,8 @@ using namespace std;
 int main ()
 {
 	int ex, i;
-	int count_e = 0;
-	int count_x = 0;
+	bool count_e = 0;
+	bool count_x = 0;
 	cout << "Which exercise: ";
 	cout << endl;
 	cin >> ex;
@@ -18,21 +18,21 @@ int main ()
 		{
 			if (word.at(i) == 'e' && count_e == 0)	
 			{ 
-				count_e++;
+				count_e = 1;
 			}	
 
 			else if (word.at(i) == 'x' && count_x == 0)	
 			{ 
-				count_x++;
+				count_x = 1;
 			}	
 		}	
-		if (count_e > 0)
+		if (count_e == 1)
 		{
 			cout << "Your word " 
 			     << word << " contains the character 'e'";
 			cout << endl;
 		}
-		if (count_x > 0)
+		if (count_x == 1)
 		{
 			cout << "Your word " 
 			     << word << " contains the character 'x'";
@@ -67,9 +67,9 @@ int main ()
 	{
 		string sentence;
 		int dot_idx;
-		int count_dot = 0;
-		int track_stop = 0;
-		int track_idx = 0;
+		bool track_dot = 0;
+		bool track_stop = 0;
+		int stop_idx = 0;
 		cout << "Enter a sentence: "; 
 		cout << endl;
 		cin >> sentence;
@@ -79,11 +79,11 @@ int main ()
 			{
 				
 				dot_idx = i;
-				count_dot++;
+				track_dot = 1;
 			}	
 			if (sentence.at(i) == 's')
 			{	
-				track_idx = i;
+				stop_idx = i;
 				if (sentence.at(i + 1) == 't' &&
 				    sentence.at(i + 2) == 'o' &&
 				    sentence.at(i + 3) == 'p')
@@ -96,8 +96,8 @@ int main ()
 			cout << "Your sentence does not contain the character '.'" << endl;
 
 		if (track_stop == 1)
-			cout << "The word \"stop\" is located at index " << track_idx << endl;
-		else if (track_stop == 0)
+			cout << "The word \"stop\" is located at index " << stop_idx << endl;
+		else (track_stop == 0)
 			cout << "Your sentence does not contain the word \"stop\"" << endl;
 	}	
 }	
