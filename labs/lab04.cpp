@@ -67,9 +67,9 @@ int main ()
 	{
 		string sentence;
 		int dot_idx;
+		int stop_idx = 0;
 		bool track_dot = 0;
 		bool track_stop = 0;
-		int stop_idx = 0;
 		cout << "Enter a sentence: "; 
 		cout << endl;
 		cin >> sentence;
