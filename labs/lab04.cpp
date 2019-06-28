@@ -31,6 +31,7 @@ using namespace std;
  ***************************************************************************/
 int main ()
 {
+<<<<<<< HEAD:labs/lab04/lab04.cpp
 	// variables
 	int ex, i;            // variable for choosing execise
 	int count_e = 0;      // tracking 'e'	
@@ -44,6 +45,11 @@ int main ()
 	string sentence;      // user input
 
 	// INPUT -- gets user input for exercise number
+=======
+	int ex, i;
+	bool count_e = 0;
+	bool count_x = 0;
+>>>>>>> 4d4028ed724e5b4698ffdd84ce424a88751a6a5a:labs/lab04.cpp
 	cout << "Which exercise: ";
 	cout << endl;
 	cin >> ex;
@@ -60,24 +66,28 @@ int main ()
 		{
 			if (word.at(i) == 'e' && count_e == 0)	
 			{ 
-				count_e++;
+				count_e = 1;
 			}	
 
 			else if (word.at(i) == 'x' && count_x == 0)	
 			{ 
-				count_x++;
+				count_x = 1;
 			}	
 		}	
+<<<<<<< HEAD:labs/lab04/lab04.cpp
 
 		// OUTPUT -- outputs whether 'e' and 'x' are in the user 
 		//           input
 		if (count_e > 0)
+=======
+		if (count_e == 1)
+>>>>>>> 4d4028ed724e5b4698ffdd84ce424a88751a6a5a:labs/lab04.cpp
 		{
 			cout << "Your word " 
 			     << word << " contains the character 'e'";
 			cout << endl;
 		}
-		if (count_x > 0)
+		if (count_x == 1)
 		{
 			cout << "Your word " 
 			     << word << " contains the character 'x'";
@@ -115,7 +125,15 @@ int main ()
 	// Excercise 3
 	else if (ex == 3)
 	{
+<<<<<<< HEAD:labs/lab04/lab04.cpp
 		// INPUT -- gets word from user
+=======
+		string sentence;
+		int dot_idx;
+		bool track_dot = 0;
+		bool track_stop = 0;
+		int stop_idx = 0;
+>>>>>>> 4d4028ed724e5b4698ffdd84ce424a88751a6a5a:labs/lab04.cpp
 		cout << "Enter a sentence: "; 
 		cout << endl;
 		cin >> sentence;
@@ -126,11 +144,11 @@ int main ()
 			if (sentence.at(i) == '.')
 			{
 				dot_idx = i;
-				count_dot++;
+				track_dot = 1;
 			}	
 			if (sentence.at(i) == 's')
 			{	
-				track_idx = i;
+				stop_idx = i;
 				if (sentence.at(i + 1) == 't' &&
 				    sentence.at(i + 2) == 'o' &&
 				    sentence.at(i + 3) == 'p')
@@ -138,6 +156,7 @@ int main ()
 			}
 		}
 
+<<<<<<< HEAD:labs/lab04/lab04.cpp
 		// OUTPUT -- prints confirmation of the presence of 
 		// 	     a "." in the sentence and if so, provides
 		//	     the index.
@@ -159,6 +178,12 @@ int main ()
 			cout << "Your sentence does not contain the word "
 			     << "\"stop\"" << endl;
 		}
+=======
+		if (track_stop == 1)
+			cout << "The word \"stop\" is located at index " << stop_idx << endl;
+		else (track_stop == 0)
+			cout << "Your sentence does not contain the word \"stop\"" << endl;
+>>>>>>> 4d4028ed724e5b4698ffdd84ce424a88751a6a5a:labs/lab04.cpp
 	}	
 }	
 
