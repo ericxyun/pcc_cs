@@ -1,0 +1,170 @@
+/************************************************************************
+* AUTHOR       : Eric 
+* ASSIGNMENT 6 : Hangman
+* CLASS        : CS002
+* SECTION      : MTRF 7am-12pm 
+* DUE DATE     : July 7, 2019
+*************************************************************************/
+#include <iostream>
+using namespace std;
+/************************************************************************
+* 
+* HANGMAN
+*
+*________________________________________________________________________
+* This program simulates the game of hangman
+*________________________________________________________________________
+* INPUTS:
+*
+* OUTPUTS:
+*________________________________________________________________________
+*************************************************************************/
+
+// setupUnsolved function prototype
+string setupUnsolved(string wordToGuess, string phrase, char guess);
+
+// updateUnsolved function prototype
+void updateUnsolved(string phrase, string unsolved, char guess);
+
+// getGuess function prototype
+//      passing guessLeft by reference
+char getGuess(string wordToGuess, int& guessLeft, string& guessSoFar);
+
+// checkCorrect function prototype
+bool checkCorrect(string phrase, int numLetters);
+
+// checkCorrectLetter function prototype
+bool checkCorrectLetter(char guess, string wordToGuess);
+
+int main()
+{
+    string wordToGuess; 	// phrase to guess
+    string guessSoFar;  	// correcly guessed letters
+    string phrase;
+    char guess;
+    int guessLeft; 	    	// number of guess left
+    int correctCount;       // count number of correct letters
+    int numLetters;
+
+
+    // INPUT - get the word to guess
+    cout << "Enter phrase: ";
+    getline(cin, wordToGuess);
+    cout << endl;
+
+    // initialize number of guesses to 7
+    numLetters = wordToGuess.size();
+    guessLeft = 7;
+    phrase = string(wordToGuess.size(), '-');
+    guessSoFar = "";
+    correctCount = 0;
+
+    cout << "Phrase: " << phrase << endl;
+    cout << endl;
+    while (!checkCorrect(phrase, numLetters) && guessLeft > 0)
+    {
+        guess = getGuess(wordToGuess, guessLeft, guessSoFar);
+        guessSoFar += guess;
+        phrase = setupUnsolved(wordToGuess, phrase, guess);
+        cout << "Guess so far: " << guessSoFar << endl;
+        cout << endl;
+    }
+    if (guessLeft == 0)
+        cout << "You lost!" << endl;
+
+}
+
+
+/************************************************************************
+ * setupUnsolved
+ * 	This function
+*************************************************************************/
+string setupUnsolved(string wordToGuess, string phrase, char guess)
+{
+    for (int i = 0; i < wordToGuess.size(); i++)
+    {
+        if (guess == wordToGuess.at(i))
+            phrase.at(i) = wordToGuess.at(i);
+    }
+    cout << "Phrase: " << phrase << endl;
+    cout << endl;
+    return phrase;
+}
+
+/************************************************************************
+ * updateUnsolved
+ * 	This function
+*************************************************************************/
+void updateUnsolved(string phrase, string unsolved, char guess)
+{
+
+}
+
+/************************************************************************
+ * getGuess
+ * 	This function
+*************************************************************************/
+char getGuess(string wordToGuess, int& guessLeft, string& guessSoFar)
+{
+    char guess;
+    cout << "Enter a guess: ";
+    cin >> guess;
+    guessSoFar += guess;
+    cout << endl;
+
+    if (isalpha(guess))
+    {
+        while (!checkCorrectLetter(guess, wordToGuess) && guessLeft > 0)
+        {
+            guessLeft -= 1;
+            cout << "Invalid guess! Please re-enter a guess: ";
+            cin >> guess;
+            guessSoFar += guess;
+            cout << endl;
+        }
+        cout << "Wrong guesses left: " << guessLeft << endl;
+        return guess;
+        
+    }
+    else 
+        return 0;
+}
+    
+
+/************************************************************************
+ * checkCorrect
+ * 	This function will check whether the phrase is correct.
+ *      Returns a bool
+*************************************************************************/
+bool checkCorrect(string phrase, int numLetters)
+{
+    int num;
+    num = 0;
+
+    for (int i = 0; i < phrase.size(); i++)
+    {
+        if (phrase.at(i) != '-')
+            num += 1;
+    }
+    if (num == numLetters)
+    {
+        cout << "Congratulations!!" << endl;
+        return true;
+    }
+    else
+        return false;
+}
+
+
+/************************************************************************
+ * checkCorrectLetter
+ * 	This function will check whether a guessed letter is correct.
+ *      Returns a bool
+*************************************************************************/
+bool checkCorrectLetter(char guess, string wordToGuess)
+{
+    if (wordToGuess.find(guess) != -1)
+        return true;
+    else
+        return false;
+}

@@ -34,20 +34,20 @@ using namespace std;
  *
  ***************************************************************************/
 // global variables
-int i;					// for loop
-int j;					// for loop
-int k;					// for loop
-int alphabet_idx;			// get index of alphabet
-int count_letter;			// to compare translation map size	
-char word_letter;			// used to isolate letters
-bool check_encrypt_decrypt_bool; 	// check if decryptable/encryptable
-string word;				// INPUT: user word
-string method;		 		// INPUT: method
-string translation;			// INPUT: translation map
-string alphabet;			// constant alphabet 
-string default_string;			// constant default string
-map<int, char> default_map;		// default string key, value map
-map<char, int> alphabet_map;		// alphabet key, value map
+int i;									// for loop
+int j;									// for loop
+int k;									// for loop
+int alphabet_idx;						// get index of alphabet
+int count_letter;						// to compare translation map size	
+char word_letter;						// used to isolate letters
+bool check_encrypt_decrypt_bool; 		// check if decryptable/encryptable
+string word;							// INPUT: user word
+string method;		 			 		// INPUT: method
+string translation;						// INPUT: translation map
+string alphabet;						// constant alphabet 
+string default_string;					// constant default string
+map<int, char> default_map;				// default string key, value map
+map<char, int> alphabet_map;			// alphabet key, value map
 
 
 // FUNCTIONS
@@ -74,8 +74,8 @@ void MethodError()
 // function to check is word is encryptable/decryptable
 void check_encrypt_decrypt()
 {
-	int letter_count; 			// counts number of letters
-	letter_count = 0; 			// initialize letter counter	
+	int letter_count; 					// counts number of letters
+	letter_count = 0; 					// initialize letter counter	
 	check_encrypt_decrypt_bool = 0;		// initialize method checker
 
 	// check if all letters in the word are lowercase.
@@ -148,7 +148,7 @@ void translation_map()
 
 	// create key-value pairs
 	for (i = 0; i < alphabet.size(); i++)      	// alphabet map  
-		alphabet_map[alphabet.at(i)] = i;      	// key: letter, value: index
+		alphabet_map[alphabet.at(i)] = i;      	// 	key: letter, value: index
 	for (i =0; i < default_string.size(); i++) 	// default map  
 	default_map[i] = default_string.at(i);    	//key: index, value: letter
 
@@ -203,5 +203,4 @@ int main()
 
 // End of main()
 }
-
 
