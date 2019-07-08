@@ -57,7 +57,6 @@ int main()
     // PROCESSING - print number of dashes equal to amount of letters
     unsolved = setupUnsolved(phrase);
     cout << "Phrase: " + unsolved << endl;
-    cout << endl;
 
     // initilize number of max number of incorrect guesses
     guessLeft = 7;
@@ -72,14 +71,16 @@ int main()
         prevGuesses += guess;
 
         unsolved = updateUnsolved(phrase, unsolved, guess);
-        cout << "Phrase: " + unsolved;
-        cout << endl;
-        cout << "Guessed so far: " << prevGuesses << endl;
-        cout << "Wrong guesses left: " << guessLeft << endl;
-        cout << endl;
 
         if (!correctLetter(phrase, guess))
             guessLeft -= 1;
+        // cout << "Phrase: " + unsolved;
+        // cout << endl;
+        cout << "Guessed so far: " << prevGuesses << endl;
+        cout << "Wrong guesses left: " << guessLeft << endl;
+        cout << unsolved << endl;
+        cout << endl;
+
             
     }
 
@@ -89,7 +90,7 @@ int main()
 
     // OUTPUT - when the player wins
     else
-        cout << "Congratulations!!" << endl;
+        cout << "Congratulations!! You won!" << endl;
 }
 
 
@@ -113,7 +114,16 @@ int main()
 string setupUnsolved(string phrase)             // user input
 {
     string unsolved;         // variable for dashed output 
-    unsolved = string(phrase.size(), '-');
+
+    // PROCESSING - checks for alpha and creates '-' phrase
+    //      replaces with '-' if isaplha() is true
+    for (int i = 0; i < phrase.size(); i++)
+    {
+        if (isalpha(phrase.at(i)))
+            unsolved += '-';
+        else
+            unsolved += phrase.at(i);
+    }
     return unsolved; 
 }
 
@@ -141,9 +151,10 @@ string updateUnsolved(string phrase,            // user input
                                                 // setupUnsolved
                       char guess)               // user input character
 {
+    // PROCESSING - replaces '-' with correct guess
     for (int i = 0; i < phrase.size(); i++) 
     {
-        if (guess == phrase.at(i))
+        if (tolower(guess) == tolower(phrase.at(i)))
             unsolved.at(i) = phrase.at(i);
     }
     return unsolved;
@@ -181,7 +192,7 @@ char getGuess(string prevGuesses)                // guess attempts
     //                  - guess is not already guessed.
     duplicateFound = prevGuesses.find(guess);
     alpha = isalpha(guess);
-    while (!alpha || duplicateFound != -1)
+    while (!alpha || duplicateFound != -1 || !islower(guess))
     {
         cout << "Invalid guess! Please re-enter a guess: ";
         cin >> guess;
@@ -213,7 +224,13 @@ char getGuess(string prevGuesses)                // guess attempts
 bool correctLetter(string phrase,               // user input string
                    char guess)                  // user guess letter
 {
-    if (phrase.find(guess) == -1)
+
+    // PROCESSING - checks to see if guess is in phrase
+    //     will convert both guess and phrase letter to lower before 
+    //     comparing.
+    for (int i = 0; i < phrase.size(); i++)
+        phrase.at(i) = tolower(phrase.at(i));
+    if (phrase.find(tolower(guess)) == -1)
         return false;
     else 
         return true;
@@ -240,7 +257,11 @@ int unsolvedLeft(string unsolved)              // output from
                                                // setupUnsolved
 {
     int count;       // track the number of dashed characters
+
+    // initialize '-' counter
     count = 0;
+
+    // PROCESSING - goes through letter and count '-'
     for (int i = 0; i < unsolved.size(); i++)
         if (unsolved.at(i) == '-')
             count += 1;
