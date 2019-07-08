@@ -1,14 +1,18 @@
 #include <iostream>
 using namespace std;
 
-
-int main() {
-	string user_input;
-	do {
-		cout << "Enter 'y' or 'n'" << endl;
-		cin >> user_input;	
-	}
-	while (user_input != "y" && user_input != "n");
+int three(int ,int);
+int main()
+{
+	int a,b;
+	a = 3;
+	b = 4;
+	cout << three(a, b);
 }
 
-
+int three(int x, int y)
+{
+	int a;
+	a = x + y;
+	return a;
+}
