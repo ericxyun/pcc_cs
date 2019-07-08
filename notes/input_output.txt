@@ -1,0 +1,3 @@
+I/O: sequence of bytes (stream of bytes) from source to destination.
+
+

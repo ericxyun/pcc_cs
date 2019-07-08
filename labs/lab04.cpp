@@ -130,10 +130,14 @@ int main ()
 =======
 		string sentence;
 		int dot_idx;
+		int stop_idx = 0;
 		bool track_dot = 0;
 		bool track_stop = 0;
+<<<<<<< HEAD
+=======
 		int stop_idx = 0;
 >>>>>>> 4d4028ed724e5b4698ffdd84ce424a88751a6a5a:labs/lab04.cpp
+>>>>>>> 416225aef3808f7d270e22da6c8292f9b8abe9c5
 		cout << "Enter a sentence: "; 
 		cout << endl;
 		cin >> sentence;

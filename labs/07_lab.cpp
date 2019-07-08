@@ -38,18 +38,17 @@ float mpgCalculator(float liters, float miles);
 float liters;		// user input - liters
 float miles;		// user input - miles
 
-// global variables - second part
-float liters1;		// user input - liters first car
-float liters2;		// user input - liters second car
-float miles1;		// user input - miles first car
-float miles2; 		// user input - miles second car
-float mpg1;			// calculated mpg first car
-float mpg2;			// calculated mpg second car
 
 int main()
 {
 	// variables
 	char answer;		// user input - answer
+	float liters1;		// user input - liters first car
+	float liters2;		// user input - liters second car
+	float miles1;		// user input - miles first car
+	float miles2; 		// user input - miles second car
+	float mpg1;			// calculated mpg first car
+	float mpg2;			// calculated mpg second car
 
 	do
 	{
