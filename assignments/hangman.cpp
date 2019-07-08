@@ -1,5 +1,5 @@
 /************************************************************************
-* AUTHOR       : Eric 
+* AUTHOR       : Eric Yun
 * ASSIGNMENT 6 : Hangman
 * CLASS        : CS002
 * SECTION      : MTRF 7am-12pm 
@@ -15,156 +15,235 @@ using namespace std;
 * This program simulates the game of hangman
 *________________________________________________________________________
 * INPUTS:
+*     phrase:       phrase to be solved
+*     guess:        single character guess
 *
 * OUTPUTS:
+*     unsolved:     correctly guessed so far
+*     prevGuesses:  guesses attempted so far
+*     guessLeft:    number of guesses left
 *________________________________________________________________________
 *************************************************************************/
 
 // setupUnsolved function prototype
-string setupUnsolved(string wordToGuess, string phrase, char guess);
+string setupUnsolved(string phrase);
 
 // updateUnsolved function prototype
-void updateUnsolved(string phrase, string unsolved, char guess);
+string updateUnsolved(string phrase, string unsolved, char guess);
 
 // getGuess function prototype
-//      passing guessLeft by reference
-char getGuess(string wordToGuess, int& guessLeft, string& guessSoFar);
+char getGuess(string prevGuesses);
 
-// checkCorrect function prototype
-bool checkCorrect(string phrase, int numLetters);
+// correctLetter function prototype
+bool correctLetter(string phrase, char guess);
 
-// checkCorrectLetter function prototype
-bool checkCorrectLetter(char guess, string wordToGuess);
+// unsolvedLeft function prototype
+int unsolvedLeft(string unsolved);
+
 
 int main()
 {
-    string wordToGuess; 	// phrase to guess
-    string guessSoFar;  	// correcly guessed letters
-    string phrase;
-    char guess;
-    int guessLeft; 	    	// number of guess left
-    int correctCount;       // count number of correct letters
-    int numLetters;
+    char guess;            // INPUT - single character to guess
+    int guessLeft;         // number of guesses left
+    string phrase;         // INPUT - phrase to be guessed
+    string unsolved;       // correctly guess so far
+    string prevGuesses;    // accumulating guess attemps
 
-
-    // INPUT - get the word to guess
+    // INPUT - get the phrase to be guessed
     cout << "Enter phrase: ";
-    getline(cin, wordToGuess);
+    getline(cin, phrase);
     cout << endl;
 
-    // initialize number of guesses to 7
-    numLetters = wordToGuess.size();
+    // PROCESSING - print number of dashes equal to amount of letters
+    unsolved = setupUnsolved(phrase);
+    cout << "Phrase: " + unsolved << endl;
+    cout << endl;
+
+    // initilize number of max number of incorrect guesses
     guessLeft = 7;
-    phrase = string(wordToGuess.size(), '-');
-    guessSoFar = "";
-    correctCount = 0;
 
-    cout << "Phrase: " << phrase << endl;
-    cout << endl;
-    while (!checkCorrect(phrase, numLetters) && guessLeft > 0)
+    // initialize accumulating guess attempts
+    prevGuesses = "";
+
+    // PROCESSING - loop for gameplay
+    while (guessLeft >= 0 && unsolvedLeft(unsolved) > 0) 
     {
-        guess = getGuess(wordToGuess, guessLeft, guessSoFar);
-        guessSoFar += guess;
-        phrase = setupUnsolved(wordToGuess, phrase, guess);
-        cout << "Guess so far: " << guessSoFar << endl;
+        guess = getGuess(prevGuesses);
+        prevGuesses += guess;
+
+        unsolved = updateUnsolved(phrase, unsolved, guess);
+        cout << "Phrase: " + unsolved;
         cout << endl;
+        cout << "Guessed so far: " << prevGuesses << endl;
+        cout << "Wrong guesses left: " << guessLeft << endl;
+        cout << endl;
+
+        if (!correctLetter(phrase, guess))
+            guessLeft -= 1;
+            
     }
+
+    // OUTPUT - when the player loses
     if (guessLeft == 0)
         cout << "You lost!" << endl;
 
+    // OUTPUT - when the player wins
+    else
+        cout << "Congratulations!!" << endl;
 }
 
 
 /************************************************************************
- * setupUnsolved
- * 	This function
+ *
+ * FUNCTION setupUnsolved
+ *
+ *-----------------------------------------------------------------------
+ * 	This function takes the phrase and prints x number of daashes.
+ * 	    x = number of letters.
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *     The following need previously defined values:
+ *         phrase: string user input 
+ *
+ * POST-CONDITIONS
+ *     This function will output dashes equivalent to the number of 
+ *         letters in the phrase
 *************************************************************************/
-string setupUnsolved(string wordToGuess, string phrase, char guess)
+string setupUnsolved(string phrase)             // user input
 {
-    for (int i = 0; i < wordToGuess.size(); i++)
+    string unsolved;         // variable for dashed output 
+    unsolved = string(phrase.size(), '-');
+    return unsolved; 
+}
+
+/************************************************************************
+ * 
+ * FUNCTION updateUnsolved
+ * 	
+ *-----------------------------------------------------------------------
+ * 	This function converts the dashed output from setupUnsolved and 
+ * 	    replaces the dash with the correctly guessed letters
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *     The following need previously defined values:
+ *         phrase:   string user input 
+ *         unsolved: output from function setupUnsolved
+ *         guess:    user input character
+ *
+ * POST-CONDITIONS
+ *     This fuction will output the result of replaced the dashed phrase
+ *          with the correctly guessed letter
+*************************************************************************/
+string updateUnsolved(string phrase,            // user input
+                      string unsolved,          // output from 
+                                                // setupUnsolved
+                      char guess)               // user input character
+{
+    for (int i = 0; i < phrase.size(); i++) 
     {
-        if (guess == wordToGuess.at(i))
-            phrase.at(i) = wordToGuess.at(i);
+        if (guess == phrase.at(i))
+            unsolved.at(i) = phrase.at(i);
     }
-    cout << "Phrase: " << phrase << endl;
-    cout << endl;
-    return phrase;
+    return unsolved;
 }
 
 /************************************************************************
- * updateUnsolved
- * 	This function
+ * 
+ * FUNCTION getGuess
+ * 	
+ *-----------------------------------------------------------------------
+ * 	This function gets the single character guess from the user 
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *     The following need previously defined values:
+ *         prevGuesses: accumulating guess attempts
+ *
+ * POST-CONDITIONS
+ *     This function will output the accumulating guess attempts made
+ *         by the user
 *************************************************************************/
-void updateUnsolved(string phrase, string unsolved, char guess)
+char getGuess(string prevGuesses)                // guess attempts
 {
+    char guess;               // user input guess
+    int duplicateFound;       // checking for duplicates
+    bool alpha;               // checking for alpha characters
 
-}
-
-/************************************************************************
- * getGuess
- * 	This function
-*************************************************************************/
-char getGuess(string wordToGuess, int& guessLeft, string& guessSoFar)
-{
-    char guess;
+    // INPUT - get the user input character
     cout << "Enter a guess: ";
     cin >> guess;
-    guessSoFar += guess;
     cout << endl;
 
-    if (isalpha(guess))
+    // PROCESSING - check to see if:
+    //                  - guess is a alphabet character
+    //                  - guess is not already guessed.
+    duplicateFound = prevGuesses.find(guess);
+    alpha = isalpha(guess);
+    while (!alpha || duplicateFound != -1)
     {
-        while (!checkCorrectLetter(guess, wordToGuess) && guessLeft > 0)
-        {
-            guessLeft -= 1;
-            cout << "Invalid guess! Please re-enter a guess: ";
-            cin >> guess;
-            guessSoFar += guess;
-            cout << endl;
-        }
-        cout << "Wrong guesses left: " << guessLeft << endl;
-        return guess;
-        
+        cout << "Invalid guess! Please re-enter a guess: ";
+        cin >> guess;
+        cout << endl;
+        duplicateFound = prevGuesses.find(guess);
+        alpha = isalpha(guess);
     }
-    else 
-        return 0;
+    return guess;
+
 }
     
-
 /************************************************************************
- * checkCorrect
- * 	This function will check whether the phrase is correct.
- *      Returns a bool
+ * 
+ * FUNCTION correctLetter
+ * 	
+ *-----------------------------------------------------------------------
+ * 	This function checks to see if the guessed letter is in the phrase
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *     The following need previously defined values:
+ *         phrase:   string user input 
+ *         guess:    user input character
+ *
+ * POST-CONDITIONS
+ *     This function will output true or flase depending on whether
+ *          the guessed character is in the phrase.
 *************************************************************************/
-bool checkCorrect(string phrase, int numLetters)
+bool correctLetter(string phrase,               // user input string
+                   char guess)                  // user guess letter
 {
-    int num;
-    num = 0;
-
-    for (int i = 0; i < phrase.size(); i++)
-    {
-        if (phrase.at(i) != '-')
-            num += 1;
-    }
-    if (num == numLetters)
-    {
-        cout << "Congratulations!!" << endl;
-        return true;
-    }
-    else
+    if (phrase.find(guess) == -1)
         return false;
+    else 
+        return true;
 }
 
-
 /************************************************************************
- * checkCorrectLetter
- * 	This function will check whether a guessed letter is correct.
- *      Returns a bool
+ * 
+ * FUNCTION unsolvedLeft
+ * 	
+ *-----------------------------------------------------------------------
+ * 	This function counts the number of dashes in the unsolved variable
+ * 	    and is used to track whether all letters were guessed correctly.
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *     The following need previously defined values:
+ *         unsolved: output from function setupUnsolved
+ *
+ * POST-CONDITIONS
+ *      This function will output the number of dash characters in the 
+ *          unsolved phrase
 *************************************************************************/
-bool checkCorrectLetter(char guess, string wordToGuess)
+int unsolvedLeft(string unsolved)              // output from 
+                                               // setupUnsolved
 {
-    if (wordToGuess.find(guess) != -1)
-        return true;
-    else
-        return false;
+    int count;       // track the number of dashed characters
+    count = 0;
+    for (int i = 0; i < unsolved.size(); i++)
+        if (unsolved.at(i) == '-')
+            count += 1;
+    return count;
 }
+
