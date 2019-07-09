@@ -68,12 +68,12 @@ int main()
 	// 	changing the value of min, max, mean
 	minMaxMean(min, max, mean);
 
-        // OUTPUT - outputs the min, max, and mean
-        cout << "The min is: " << min << endl;
-        cout << "The max is: " << max << endl;
-        cout << fixed << showpoint;
-        cout << setprecision(1);
-        cout << "The average is: " << mean << endl;
+	// OUTPUT - outputs the min, max, and mean
+	cout << "The min is: " << min << endl;
+	cout << "The max is: " << max << endl;
+	cout << fixed << showpoint;
+	cout << setprecision(1);
+	cout << "The average is: " << mean << endl;
 	}
 
 	else if (ex == 2)
@@ -85,20 +85,19 @@ int main()
 		cin >> filename;
 		cout << endl;
 
-        // checkFile - checks to see if file is successfully opened
-        if (checkFile(filename, min, max, mean))
-        {
-            // OUTPUT - outpus the min, max and mean
-            cout << "The max number is: " << max << endl;
-            cout << "The min number is: " << min << endl;
-            cout << fixed << showpoint;
-            cout << setprecision(1);
-            cout << "The average is: " << mean << endl;
-        }
-        else
-            cout << "Cannot open the file!" << endl;
+	// checkFile - checks to see if file is successfully opened
+	if (checkFile(filename, min, max, mean))
+	{
+		// OUTPUT - outpus the min, max and mean
+		cout << "The max number is: " << max << endl;
+		cout << "The min number is: " << min << endl;
+		cout << fixed << showpoint;
+		cout << setprecision(1);
+		cout << "The average is: " << mean << endl;
 	}
-
+	else
+		cout << "Cannot open the file!" << endl;
+	}
 }
 /************************************************************************
  * 
