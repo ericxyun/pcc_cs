@@ -1,10 +1,10 @@
 
 /**************************************************************************
- *	AUTHOR	         : Eric Yun
- *	ASSIGNMENT #	 : 
- *	CLASS	         : CS 002
- *	SECTION          : MTRF: 7:00a - 12p
- *	Due Date         : June 20, 2019	
+ *	AUTHOR	 : Eric Yun
+ *	Lab #	 : 
+ *	CLASS	 : CS 002
+ *	SECTION  : MTRF: 7:00a - 12p
+ *	Due Date : June 20, 2019	
  **************************************************************************/
 #include <iostream>
 using namespace std;

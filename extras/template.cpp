@@ -21,4 +21,25 @@ using namespace std;
  *
  *--------------------------------------------------------------------------
  ***************************************************************************/
-
+int main()
+{}
+/************************************************************************
+ * 
+ * FUNCTION minMaxMean
+ * 	
+ *-----------------------------------------------------------------------
+ * This function recieves one of three string options: min, max, 
+ *     mean and returns, the min, max, and mean, respectively, given 
+ *     a file with a list of integers
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *     The following need previously defined values:
+ *     min       : uses a call by reference to calculate mean.
+ *     max       : uses a call by reference to calculate max.
+ *     mean      : uses a call by reference to calculate mean 
+ *
+ * POST-CONDITIONS
+ *     This function will calculate the values of either the minimum, 
+ *         maximum, and mean
+*************************************************************************/
