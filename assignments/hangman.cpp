@@ -1,4 +1,4 @@
-/************************************************************************
+[Hit return to continue] 
 * AUTHOR       : Eric Yun
 * ASSIGNMENT 6 : Hangman
 * CLASS        : CS002
