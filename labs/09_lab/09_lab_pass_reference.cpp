@@ -52,21 +52,21 @@ bool checkFile(string filename, float& min, float& max, float& mean);
 int main()
 {
     // variables
-	int ex;		      // variable to store exercise number
-	float min; 	      // pass by reference minimum
-	float max; 	      // pass by reference maxmimum
-	float mean; 	  // pass by reference average
+    int ex;	      // variable to store exercise number
+    float min; 	      // pass by reference minimum
+    float max; 	      // pass by reference maxmimum
+    float mean;       // pass by reference average
 
     // INPUT -- gets user input for exercise number
-	cout << "Which exercise? ";
-	cin >> ex;
+    cout << "Which exercise? ";
+    cin >> ex;
     cout << endl;
 
 	if (ex == 1)
 	{
-		// minMaxMean - using min, max, mean as pass by reference.
-		// 		changing the value of min, max, mean
-		minMaxMean(min, max, mean);
+	// minMaxMean - using min, max, mean as pass by reference.
+	// 	changing the value of min, max, mean
+	minMaxMean(min, max, mean);
 
         // OUTPUT - outputs the min, max, and mean
         cout << "The min is: " << min << endl;
@@ -125,32 +125,31 @@ int main()
 void minMaxMean(float& min, float& max, float& mean)
 {
     float current;                    // the current value in the list
-	float count;                 	  // counts the number of lines
-	int sum;                          // accumulates the sum
-	string line;                      // the string value of the list
+    float count;                      // counts the number of lines
+    int sum;                          // accumulates the sum
+    string line;                      // the string value of the list
     ifstream file("numbers.dat");     // opening the file
 
 
-	// initializing variables for mean
-	count = 0;
-	sum = 0;
+    // initializing variables for mean
+    count = 0;
+    sum = 0;
 
-	while (getline(file, line))
-	{
-		istringstream iss(line);
-		iss >> current;
-	// PROCESSING - calculates the minimum
-		if (current < min)
-			min = current;
-	// PROCESSING - calculates the maximum
-		if (current > max)
-			max = current;
-	// PROCESSING - accumulates the sum and calculates the mean
-		sum += current;
-		count++;
-	}
-	mean = sum / count;
-
+    while (getline(file, line))
+    {
+	istringstream iss(line);
+	iss >> current;
+        // PROCESSING - calculates the minimum
+	if (current < min)
+		min = current;
+        // PROCESSING - calculates the maximum
+	if (current > max)
+		max = current;
+        // PROCESSING - accumulates the sum and calculates the mean
+	sum += current;
+	count++;
+    }
+    mean = sum / count;
 }
 /************************************************************************
  * 
@@ -174,33 +173,33 @@ void minMaxMean(float& min, float& max, float& mean)
 bool checkFile(string filename, float& min, float& max, float& mean)
 {
     float current;              // the current value in the list
-	float count;                // counts the number of lines
-	float sum;                  // accumulates the sum
-	string line;                // the string value of the list
+    float count;                // counts the number of lines
+    float sum;                  // accumulates the sum
+    string line;                // the string value of the list
     ifstream file(filename);    // opening the file
 
-	// PROCESSING - check if file has opened successfully
+    // PROCESSING - check if file has opened successfully
     if (file.is_open())
     {
-		// initializing variables for mean
-		count = 0;
-		sum = 0;
+	// initializing variables for mean
+	count = 0;
+	sum = 0;
 
-		while (getline(file, line))
-		{
-			istringstream iss(line);
-			iss >> current;
-		// PROCESSING - calculates the minimum
-			if (current < min)
-				min = current;
-		// PROCESSING - calculates the maximum
-			if (current > max)
-				max = current;
-		// PROCESSING - accumulates the sum and calculates the mean
-			sum += current;
-			count++;
-		}
-		mean = sum / count;
+	while (getline(file, line))
+	{
+	    istringstream iss(line);
+	    iss >> current;
+	    // PROCESSING - calculates the minimum
+	    if (current < min)
+	        min = current;
+	    // PROCESSING - calculates the maximum
+	    if (current > max)
+		max = current;
+	    // PROCESSING - accumulates the sum and calculates the mean
+	    sum += current;
+	    count++;
+	}
+	mean = sum / count;
         return 1;
     }
     else
