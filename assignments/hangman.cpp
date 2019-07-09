@@ -25,19 +25,45 @@ using namespace std;
 *________________________________________________________________________
 *************************************************************************/
 
-// setupUnsolved function prototype
+/************************************************************************
+ * setupUnsolved
+ *      This function receives the user input phrase as an input and 
+ *      	converts then letters into '-'
+*************************************************************************/
 string setupUnsolved(string phrase);
 
-// updateUnsolved function prototype
+/************************************************************************
+ * updateUnsolved
+ *     This function recieves the phrase, unsolved string from the 
+ *         setupUnsolved function, and the user input guess and returns 
+ *         an update version th:e of dashed phrase that has been replaced
+ *         by the correct guesses.
+*************************************************************************/
 string updateUnsolved(string phrase, string unsolved, char guess);
 
-// getGuess function prototype
+/************************************************************************
+ * getGuess
+ *     This function gets a single character guess from the user and 
+ *         outputs that input
+*************************************************************************/
 char getGuess(string prevGuesses);
 
-// correctLetter function prototype
+/************************************************************************
+ * correctLetter
+ *      This function takes in the phrase and guess from the user input
+ * 			and return a Boolean value. 0 if guess is not in phrase and 
+ * 			1 otherwise.
+ *         
+*************************************************************************/
 bool correctLetter(string phrase, char guess);
 
-// unsolvedLeft function prototype
+/************************************************************************
+ * unsolvedLeft
+ * 		This function takes in the unsolved dashes and counts the number 
+ * 			of dashes and returns an integer. This is to be used to know 
+ * 			when all letters are correctly guessed.
+ *
+*************************************************************************/
 int unsolvedLeft(string unsolved);
 
 
