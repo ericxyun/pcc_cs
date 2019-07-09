@@ -43,9 +43,10 @@ void minMaxMean(float& min, float& max, float& mean);
 
 /**************************************************************************
 * checkFile 
-*     This function takes in the file name and  provides the function of
-*         returning a Boolean value depending on whether a file has 
-*         successfully opened or not.
+*     This function takes in the file name, min, max, mean, and provides 
+*         the function of returning a Boolean value depending on whether a 
+*         file has successfully opened or not.
+*
 **************************************************************************/
 bool checkFile(string filename, float& min, float& max, float& mean);
 
@@ -112,15 +113,13 @@ int main()
  *-----------------------------------------------------------------------
  * PRE-CONDITIONS
  *     The following need previously defined values:
- *         calcType: string option for calculation
- *             Options:
- *                 - min: calculates the min
- *                 - max: calculates the max
- *                 - mean: calculates the mean
+ *     min       : uses a call by reference to calculate mean.
+ *     max       : uses a call by reference to calculate max.
+ *     mean      : uses a call by reference to calculate mean 
  *
  * POST-CONDITIONS
- *     This function will return the values of either the minimum, 
- *         maximum, or mean, depending on the parameter selection
+ *     This function will calculate the values of either the minimum, 
+ *         maximum, and mean
 *************************************************************************/
 void minMaxMean(float& min, float& max, float& mean)
 {
@@ -157,18 +156,21 @@ void minMaxMean(float& min, float& max, float& mean)
  * FUNCTION checkFile
  * 	
  *-----------------------------------------------------------------------
- * This function does not recieve any input but provides the function of
- *     returning a Boolean value depending on whether a file has 
- *     successfully opened or not.
+ * This function takes in the file name, min, max, mean, and provides 
+ *     the function of returning a Boolean value depending on whether a 
+ *     file has successfully opened or not.
  *
  *-----------------------------------------------------------------------
  * PRE-CONDITIONS
- *     filename: user input file name.
+ *     The following need previously defined values:
+ *     filename  : user input file name.
+ *     min       : uses a call by reference to calculate mean.
+ *     max       : uses a call by reference to calculate max.
+ *     mean      : uses a call by reference to calculate mean 
  *
  * POST-CONDITIONS
- *     This function will output a Boolean value:
- *          1: file is opened successfully
- *          2: fill opening is not successful.
+ *     This function will calculate the values of either the minimum, 
+ *         maximum, and mean given that the file has opened successfully
  *
 *************************************************************************/
 bool checkFile(string filename, float& min, float& max, float& mean)
