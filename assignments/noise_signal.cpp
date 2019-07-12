@@ -36,7 +36,7 @@ using namespace std;
  * 		This function recieves an empty array and its size and outputs
  * 		fills the array with random numbers between 4 and 10.
 **************************************************************************/
-void sequence(double seq[], double SIZE);
+void sequence(double seq[], double SIZE, double a, double b);
 
 /**************************************************************************
  * randFLoat
@@ -89,6 +89,7 @@ void coutTest(float pMean1, 	// practical mean first array
 
 int main()
 {
+// PART I
 	// variables
 	double pMean1, pMean2; 			// practical means of arrays
 	double pVar1, pVar2; 			// practical variances of arrays
@@ -101,8 +102,8 @@ int main()
 	srand(500);
 
 	// creating two arrays of different sizes
-	sequence(seq1, 100);
-	sequence(seq2, 10000);
+	sequence(seq1, 100, 4, 10);
+	sequence(seq2, 10000, 4, 10);
 
 	// PROCESSING
 	// practical mean
@@ -126,6 +127,61 @@ int main()
 			 pVar2,
 			 tMean,
 			 tVar);
+
+// PART 2
+	double seq3[500];
+	double seq4[500];
+	double a3, b3;
+	double a4, b4;
+
+	// the solved unknowns
+	// 		tMean = 4; tVar = 0.5
+	//		tMean = 4; tVar = 2
+	a3 = 4 - (sqrt(6)/2);
+	b3 = sqrt(6) + (sqrt(6)/2) + 4;
+	a4 = 4 - sqrt(6);
+	b4 = (3 * sqrt(6)) + 4;
+
+	// two sequences
+	sequence(seq3, 500, a3, b3);
+	sequence(seq4, 500, a4, b4);
+
+	coutTest(practicalMean(seq3, 500),
+			 practicalMean(seq4, 500),
+			 practicalVariance(seq3, 500, practicalMean(seq3, 500)),
+			 practicalVariance(seq4, 500, practicalMean(seq4, 500)),
+			 theoreticalMean(a3, b3),
+			 theoreticalVariance(a4, b4));
+
+	cout << "a3: " << a3 << endl;
+	cout << "b3: " << b3 << endl;
+	cout << "a4: " << a4 << endl;
+	cout << "b4: " << b4 << endl;
+
+// PART 3
+
+// PART 4
+
+}
+
+/**************************************************************************
+ * FUNCTION randFloat
+ *   	
+ *-------------------------------------------------------------------------
+ * This function inputs two double variables and generates a random
+ * 		number between those two numbers.
+ *    
+ *-------------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		a: lower bound number
+ * 		b: upper bound number
+ *
+ * POST-CONDITIONS
+ * 		Returns a random number between 4 and 10
+**************************************************************************/
+double randFloat(double a, double b)
+{
+	return a + (static_cast<double>(rand()) / RAND_MAX) * (b -a);
 }
 
 /**************************************************************************
@@ -177,31 +233,12 @@ void coutTest(float pMean1, 	// practical mean first array
  * POST-CONDITIONS
  * 		Fills in array with random numbers between 4 and 10
 **************************************************************************/
-void sequence(double seq[], double SIZE)
+void sequence(double seq[], double SIZE, double a, double b)
 {
 	for (int i = 0; i < SIZE; i++)
-		seq[i] = randFloat(4, 10);
+		seq[i] = randFloat(a, b);
 }
 
-/**************************************************************************
- * FUNCTION randFloat
- *   	
- *-------------------------------------------------------------------------
- * This function inputs two double variables and generates a random
- * 		number between those two numbers.
- *    
- *-------------------------------------------------------------------------
- * PRE-CONDITIONS
- * 		a: lower bound number
- * 		b: upper bound number
- *
- * POST-CONDITIONS
- * 		Returns a random number between 4 and 10
-**************************************************************************/
-double randFloat(double a, double b)
-{
-	return a + (static_cast<double>(rand()) / RAND_MAX) * (b -a);
-}
 
 /**************************************************************************
  * FUNCTION practicalMean
@@ -220,9 +257,8 @@ double randFloat(double a, double b)
 **************************************************************************/
 double practicalMean(double seq[], double SIZE)
 {
-	double sum;    // accumulated sum of the numbers
-	double mean;   // mean of the numbers in the array
-	sum = 0;
+	double sum = 0;
+	double mean;
 	for(int i = 0; i < SIZE; i++)
 		sum += seq[i];
 	mean = sum / SIZE;
@@ -274,10 +310,8 @@ double theoreticalMean(double a, double b)
 **************************************************************************/
 double practicalVariance(double seq[], int SIZE, double mean)
 {
-	double sum;
+	double sum = 0;
 	double variance;
-
-	sum = 0;
 
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -300,7 +334,7 @@ double practicalVariance(double seq[], int SIZE, double mean)
  * 		a: lower bound number
  * 		b: upper bound number
  *
- * POST-CONDITIONS
+ * POST-CONDITIOS
  * 		returns calculated theoretical variance
 **************************************************************************/
 double theoreticalVariance(double a, double b)
@@ -309,4 +343,5 @@ double theoreticalVariance(double a, double b)
 	variance = ((b-a) * (b-a)) / 12;	
 	return variance;
 }
+
 
