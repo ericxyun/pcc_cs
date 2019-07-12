@@ -14,8 +14,17 @@ using namespace std;
  * ARRAYS - INTRO TO NOISE SIGNALS
  *
  *_________________________________________________________________________
- * This program will generate and array of random numbers between 4 and 6
- * 		and will calculate the mean and variance for comparison.
+ * There are four parts to this program:
+ *		Part 1: Takes sequence arrays of size 100 and 10,000 between the
+ *				the numbers 4 and 10 and compares their respective mean and
+ *              variance the the theorectical mean and theoretical 
+ *				variance.
+ *		Part 2: Generates two sequences of arrays of size 500 with 
+ *				same mean(4) but differing variances(0.5 and 2) and 
+ * 				compares the results as done in part 1.
+ *  	Part 3: This is a variation of part two except the means are -4.0 
+ *				and 0.0 and the variance is 3.0 for both
+ * 		Part 4:
  *
  *_________________________________________________________________________
  * INPUTS:
@@ -87,6 +96,12 @@ void coutTest(float pMean1, 	// practical mean first array
 			  float tMean, 		// theoretical mean
 			  float tVar); 		// theorectical variance
 
+/**************************************************************************
+ * rand_mv
+ * 		This function prints the results of the calculations
+**************************************************************************/
+double rand_mv(double a, double b);
+
 int main()
 {
 // PART I
@@ -131,36 +146,101 @@ int main()
 // PART 2
 	double seq3[500];
 	double seq4[500];
-	double a3, b3;
-	double a4, b4;
+	double a1, b1;
+	double a2, b2;
 
 	// the solved unknowns
 	// 		tMean = 4; tVar = 0.5
 	//		tMean = 4; tVar = 2
-	a3 = 4 - (sqrt(6)/2);
-	b3 = sqrt(6) + (sqrt(6)/2) + 4;
-	a4 = 4 - sqrt(6);
-	b4 = (3 * sqrt(6)) + 4;
+	a1 = 4 - (sqrt(6)/2);
+	b1 = 4 + (sqrt(6)/2);
+	a2 = 4 - sqrt(6);
+	b2 = 4 + sqrt(6);
 
 	// two sequences
-	sequence(seq3, 500, a3, b3);
-	sequence(seq4, 500, a4, b4);
+	sequence(seq3, 500, a1, b1);
+	sequence(seq4, 500, a2, b2);
 
-	coutTest(practicalMean(seq3, 500),
-			 practicalMean(seq4, 500),
-			 practicalVariance(seq3, 500, practicalMean(seq3, 500)),
-			 practicalVariance(seq4, 500, practicalMean(seq4, 500)),
-			 theoreticalMean(a3, b3),
-			 theoreticalVariance(a4, b4));
+	// PROCESSING - calculate mean/variance for first array
+	pMean1 = practicalMean(seq3, 500);
+	pVar1  = practicalVariance(seq3, 500, practicalMean(seq3, 500));
+	tMean = theoreticalMean(a1, b1);
+	tVar  = theoreticalVariance(a1, b1);
 
-	cout << "a3: " << a3 << endl;
-	cout << "b3: " << b3 << endl;
-	cout << "a4: " << a4 << endl;
-	cout << "b4: " << b4 << endl;
+	// OUTPUT - print results of first array
+	cout << tMean << " ";
+	cout << pMean1 << " ";
+	cout << tVar << " ";
+	cout << pVar1 << endl;
+	
+	// PROCESSING - calculate mean/variance for second  array
+    pMean2 = practicalMean(seq4, 500);
+	pVar2  = practicalVariance(seq4, 500, practicalMean(seq4, 500));
+	tMean = theoreticalMean(a2, b2);
+	tVar  = theoreticalVariance(a2, b2);
+	
+	// OUTPUT - print results of second array
+	cout << tMean << " ";
+	cout << pMean2 << " ";
+	cout << tVar << " ";
+	cout << pVar2 << endl;
+	cout << endl;
 
 // PART 3
+	double seq5[500];
+	double seq6[500];
+
+	// the solved unknowns
+	// 		tMean = 3.0; tVar = 0.0
+	//		tMean = -4.0; tVar = 0.0
+	a1 = -3;
+	b1 = 3;
+	a2 = -7;
+	b2 = -1;
+
+	// two sequences
+	sequence(seq5, 500, a1, b1);
+	sequence(seq6, 500, a2, b2);
+
+	
+	// PROCESSING - calculate mean/variance for first array
+	pMean1 = practicalMean(seq5, 500);
+	pVar1  = practicalVariance(seq5, 500, practicalMean(seq5, 500));
+	tMean = theoreticalMean(a1, b1);
+	tVar  = theoreticalVariance(a1, b1);
+
+	// OUTPUT - print results of first array
+	cout << tMean << " ";
+	cout << pMean1 << " ";
+	cout << tVar << " ";
+	cout << pVar1 << endl;
+	
+	// PROCESSING - calculate mean/variance for second array
+    pMean2 = practicalMean(seq6, 500);
+	pVar2  = practicalVariance(seq6, 500, practicalMean(seq6, 500));
+	tMean = theoreticalMean(a2, b2);
+	tVar  = theoreticalVariance(a2, b2);
+
+	// OUTPUT - print results of first array
+	cout << tMean << " ";
+	cout << pMean2 << " ";
+	cout << tVar << " ";
+	cout << pVar2 << endl;
+	cout << endl;
+
 
 // PART 4
+	double mean;
+	double variance;
+
+	cout << "Enter Mean: " << endl;
+	cout << "Enter Variance: " << endl;
+	cin >> mean >>  variance;
+
+	cout << mean << " " << variance << endl;
+	cout << rand_mv(mean, variance) << endl;
+
+
 
 }
 
@@ -181,7 +261,7 @@ int main()
 **************************************************************************/
 double randFloat(double a, double b)
 {
-	return a + (static_cast<double>(rand()) / RAND_MAX) * (b -a);
+	return a + (static_cast<double>(rand()) / RAND_MAX) * (b - a);
 }
 
 /**************************************************************************
@@ -216,6 +296,7 @@ void coutTest(float pMean1, 	// practical mean first array
 	cout << pMean2 << " ";
 	cout << tVar << " ";
 	cout << pVar2 << endl;
+	cout << endl;
 }
 
 /**************************************************************************
@@ -334,7 +415,7 @@ double practicalVariance(double seq[], int SIZE, double mean)
  * 		a: lower bound number
  * 		b: upper bound number
  *
- * POST-CONDITIOS
+ * POST-CONDITIONS
  * 		returns calculated theoretical variance
 **************************************************************************/
 double theoreticalVariance(double a, double b)
@@ -344,4 +425,23 @@ double theoreticalVariance(double a, double b)
 	return variance;
 }
 
-
+/**************************************************************************
+ * FUNCTION randMV
+ *   	
+ *-------------------------------------------------------------------------
+ * This function takes in a mean value and a variance value from the user
+ *		and generates a random floating point number using the FUNCTION
+ *		randFloat().
+ *    
+ *-------------------------------------------------------------------------
+ * PRE-CONDITIONS
+ *		mean:     user input mean
+ *		variance: user input variance
+ *
+ * POST-CONDITIONS
+ * 		returns a random floating point number
+**************************************************************************/
+double rand_mv(double a, double b)
+{
+	return randFloat(a, b);
+}

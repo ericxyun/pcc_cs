@@ -54,109 +54,99 @@ void matrixMult(const int a[][R], const int b[][S],  int result[][S]);
 
 int main()
 {
-	// INPUT - get the exercise number
-	int ex;
-	cout << "Which exercise? ";
-	cin >> ex;
-	cout << endl;
+// INPUT - get the exercise number
 
-	if (ex == 1)
+	// variables
+	int sumA[M][N]; 		// first matrix for addition
+	int sumB[M][N]; 		// second matrix for addition
+	int sumResult[M][N];    // result matrix for addition
+	int count;
+
+	// INPUT - get the two matrices from user input
+	cout << "Enter Matrix A(size 2x3): " << endl;
+	cout << "Enter Matrix B(size 2x3): " << endl;
+
+	for (int i = 0; i < M; i++)
 	{
-		// variables
-		int sumA[M][N]; 		// first matrix for addition
-		int sumB[M][N]; 		// second matrix for addition
-		int sumResult[M][N];    // result matrix for addition
-
-		// INPUT - get the two matrices from user input
-		cout << "Enter Matrix A: ";
-		for (int i = 0; i < M; i++)
+		for (int j = 0; j < N; j++)
 		{
-			for (int j = 0; j < N; j++)
-			{
-				cin >> sumA[i][j];
-			}
+			cin >> sumA[i][j];
 		}
-		cout << "Enter Matrix B: ";
-		for (int i = 0; i < M; i++)
+	}
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
 		{
-			for (int j = 0; j < N; j++)
-			{
-				cin >> sumB[i][j];
-			}
+			cin >> sumB[i][j];
 		}
+	}
 
-		// PROCESSING - Add the two matrices
-		matrixAdd(sumA, sumB, sumResult);
+	// PROCESSING - Add the two matrices
+	matrixAdd(sumA, sumB, sumResult);
 
-		// OUTPUT - print results
-		int count;
-		count = 0; 		// counter for printing three numbers per line
-
-		cout << "Res: " << endl;
-		for (int i = 0; i < M; i++)
+	// OUTPUT - print results
+	count = 0; 		// counter for printing three numbers per line
+	cout << "Res:" << endl;
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
 		{
-			for (int j = 0; j < N; j++)
-			{
-				 cout << sumResult[i][j] << " ";
-				 count++;
-				 if (count == 3)
-				 {
-					cout << endl;
-					count = 0;
-				 }
-			}
+			 cout << sumResult[i][j] << " ";
+			 count++;
+			 if (count == 3)
+			 {
+				cout << endl;
+				count = 0;
+			 }
 		}
 	}
 
 
-	else if (ex == 2)
+
+	// variables
+	int multA[Q][R]; 		// first matrix for multiplication
+	int multB[R][S]; 		// second matrix for multiplication
+	int multResult[Q][S]; 	// result matrix for multiplication
+	
+	// INPUT - get the two matrices from user input
+	cout << "Enter Matrix A(size 2x3): " << endl;
+	cout << "Enter Matrix B(size 3x3): " << endl;
+	for (int i = 0; i < Q; i++)
 	{
-		// variables
-		int multA[Q][R]; 		// first matrix for multiplication
-		int multB[R][S]; 		// second matrix for multiplication
-		int multResult[Q][S]; 	// result matrix for multiplication
-		
-		// INPUT - get the two matrices from user input
-		cout << "Enter Matrix A(size 2x3): ";
-		for (int i = 0; i < Q; i++)
+		for (int j = 0; j < R; j++)
 		{
-			for (int j = 0; j < R; j++)
-			{
-				cin >> multA[i][j];
-			}
-		}
-
-		cout << "Enter Matrix B(size 3x3): ";
-		for (int i = 0; i < R; i++)
-		{
-			for (int j = 0; j < S; j++)
-			{
-				cin >> multB[i][j];
-			}
-		}
-		
-		// PROCESSING - multiply the two matrices
-		matrixMult(multA, multB, multResult);
-
-		// OUTPUT - print the resulting matrix
-		int count; 		
-		count = 0; 		// counter for printing three numbers per line
-
-		cout << "Res: " << endl;
-		for (int i = 0; i < Q; i++)
-		{
-			for (int j = 0; j < S; j++)
-			{
-				 cout << multResult[i][j] << " ";
-				 count++;
-				 if (count == 3)
-				 {
-					cout << endl;
-					count = 0;
-				 }
-			}
+			cin >> multA[i][j];
 		}
 	}
+
+	for (int i = 0; i < R; i++)
+	{
+		for (int j = 0; j < S; j++)
+		{
+			cin >> multB[i][j];
+		}
+	}
+	
+	// PROCESSING - multiply the two matrices
+	matrixMult(multA, multB, multResult);
+
+	// OUTPUT - print the resulting matrix
+	count = 0; 		// counter for printing three numbers per line
+	cout << "Res:" << endl;
+	for (int i = 0; i < Q; i++)
+	{
+		for (int j = 0; j < S; j++)
+		{
+			 cout << multResult[i][j] << " ";
+			 count++;
+			 if (count == 3)
+			 {
+				cout << endl;
+				count = 0;
+			 }
+		}
+	}
+	
 }
 
 /************************************************************************
@@ -180,15 +170,12 @@ int main()
 *************************************************************************/
 void matrixAdd(const int a[][N], const int b[][N],  int result[][N])
 {
-
 	// calculating the matrix addition
 	for (int i = 0; i < M; i++)
 	{
 		for (int j = 0; j < N; j++)
 			result[i][j] = a[i][j] + b[i][j];
 	}
-
-
 }
 
 
@@ -226,7 +213,6 @@ void matrixMult(const int a[][R], const int b[][S],  int result[][S])
 			}
 		}
 	}
-
 }
 
 
