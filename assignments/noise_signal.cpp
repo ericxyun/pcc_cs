@@ -98,9 +98,11 @@ void coutTest(float pMean1, 	// practical mean first array
 
 /**************************************************************************
  * rand_mv
- * 		This function prints the results of the calculations
+ * 		This function takes in a mean value and a variance value from the 
+ * 		user, calculates the range and generates a random floating point 
+ * 		number using the FUNCTION randFloat().
 **************************************************************************/
-double rand_mv(double a, double b);
+double rand_mv(double mean, double var);
 
 int main()
 {
@@ -112,6 +114,8 @@ int main()
 	double tVar; 					// theoretical variance
 	double seq1[100]; 				// array of size 100
 	double seq2[10000]; 			// array of size 10000
+	double a1, b1; 					// two ranges for first array
+	double a2, b2; 					// two ranges for second array
 
 	// setting random seed to 500
 	srand(500);
@@ -144,10 +148,8 @@ int main()
 			 tVar);
 
 // PART 2
-	double seq3[500];
-	double seq4[500];
-	double a1, b1;
-	double a2, b2;
+	double seq3[500]; 			// first array
+	double seq4[500]; 			// second array
 
 	// the solved unknowns
 	// 		tMean = 4; tVar = 0.5
@@ -187,8 +189,8 @@ int main()
 	cout << endl;
 
 // PART 3
-	double seq5[500];
-	double seq6[500];
+	double seq5[500]; 			// first array
+	double seq6[500]; 			// second array
 
 	// the solved unknowns
 	// 		tMean = 3.0; tVar = 0.0
@@ -230,14 +232,16 @@ int main()
 
 
 // PART 4
-	double mean;
-	double variance;
+	//variables
+	double mean; 		// user input mean
+	double variance; 	// user input variance
 
+	// INPUT - get mean and variance values from user input
 	cout << "Enter Mean: " << endl;
 	cout << "Enter Variance: " << endl;
 	cin >> mean >>  variance;
 
-	cout << mean << " " << variance << endl;
+	// OUTPUT - print random floating point.
 	cout << rand_mv(mean, variance) << endl;
 
 
@@ -429,19 +433,26 @@ double theoreticalVariance(double a, double b)
  * FUNCTION randMV
  *   	
  *-------------------------------------------------------------------------
- * This function takes in a mean value and a variance value from the user
- *		and generates a random floating point number using the FUNCTION
- *		randFloat().
+ * This function takes in a mean value and a variance value from the user,
+ * 		calculates the range and generates a random floating point number 
+ * 		using the FUNCTION randFloat().
  *    
  *-------------------------------------------------------------------------
  * PRE-CONDITIONS
  *		mean:     user input mean
  *		variance: user input variance
+ *		output from the randFloat function.
  *
  * POST-CONDITIONS
  * 		returns a random floating point number
 **************************************************************************/
-double rand_mv(double a, double b)
+double rand_mv(double mean, double var)
 {
+	// PROCESSING - get the two range to feed into randFloat
+	double a = mean - sqrt(3 * var);
+	double b = mean + sqrt(3 * var);
+
+	// OUTPUT - print the resulting two values
+	cout << a << " " << b << endl;
 	return randFloat(a, b);
 }
