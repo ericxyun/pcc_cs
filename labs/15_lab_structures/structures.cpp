@@ -98,9 +98,7 @@ int main()
 
 	// OUTPUT - print contents of the array
 	for (int i = 0; i < 12; i++)
-	{
 		printMovieData(mov1[i]);
-	}
 }
 
 /************************************************************************
