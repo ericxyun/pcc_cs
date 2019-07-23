@@ -25,7 +25,6 @@ using namespace std;
  *		outputs a vector with sections of the strings that have been 
  *		separated by the delimiter
  *
- *--------------------------------------------------------------------------
  ***************************************************************************/
 
 // FUNCTION Prototypes
@@ -42,22 +41,24 @@ int main()
 {
 	// variables
 	vector<string> v; 	// holds the vector to output
-	string target;
-	string delimiter;
-//	cout << "Enter the taret string: \n";
-//	getline(cin, target);
-//	cout << "Enter the delimiter: \n";
-//	cin >> delimiter;
+	string target;		// INPUT - target string
+	string delimiter;	// INPUT - user delimiter
 
-	target = "the cow jumped over the moon";
-	delimiter = "the";
+	// INPUT - get target and delimiter from user
+	cout << "Enter the target string: \n";
+	getline(cin, target);
+	cout << "Enter the delimiter: \n";
+	getline(cin, delimiter);
 
-	// split function converts string to vector given the delimiter
+	// PROCESS - create string vector
 	v = split(target, delimiter);
 
 	// OUTPUT - prints the resulting vector
 	for (int i = 0; i < v.size(); i++)
-		cout << v[i] << endl;
+		if (v[i] != "")
+			cout << v[i] << endl;
+	cout << endl;
+
 }
 
 
@@ -85,29 +86,34 @@ vector<string> split(string target, 	// target string
 {
 	// variables
 	vector<string> v; 	// vector to hold target values
-	string s;			// string to track non-delimiter strings
-	string str;
+	size_t  delimPos;	// string to track non-delimiter strings
+	string str;			// string copy of target
 
+	// PROCESSING - convert string to vector
+	str = target;
+	v.push_back(str);
 
-	// initialize string to ""
-
-
-	// PROCESSING - split the target on the delimiters
-	for (int i = 0; i < target.size(); i++)
+	// add strings without first instance of delim to vector
+	do
 	{
-		s += target[i];
-		if (target[i] == delimiter.c_str()[0])
+		delimPos = str.find(delimiter);
+		str = str.substr(delimPos + delimiter.size());
+		if (delimPos < target.size())
 		{
-			// removes the last element of the string
-			 s.pop_back();
-			
-			// adds the current s to the vector
-			v.push_back(s);
-			s = "";
+			v.push_back(str);
 		}
 	}
-  // adds the last s to the vector
-	v.push_back(s);
+	while (delimPos < target.size());
+
+	// filter and clean strings
+	for (int i = 0; i < v.size(); i++)
+	{
+		delimPos = v[i].find(delimiter);
+		if (delimPos < v[i].size())
+		{
+			v[i] = v[i].erase(delimPos, v[i].size());
+		}
+	}
 
 	// OUTPUT - returns vector with string contents
 	return v;
