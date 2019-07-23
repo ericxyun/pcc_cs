@@ -119,9 +119,9 @@ int main()
 *************************************************************************/
 void printMovieData(const MovieData &m)
 {
-	cout << "Title: " << m.title << endl;
-	cout << "Director: " << m.director << endl;
-	cout << "Year released: " << m.year << endl;
-	cout << "Running Time: " << m.runTime << endl;
+	cout << "Title: "         << m.title    << endl;
+	cout << "Director: "      << m.director << endl;
+	cout << "Year released: " << m.year     << endl;
+	cout << "Running Time: "  << m.runTime  << endl;
 	cout << endl;
 }
