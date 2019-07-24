@@ -1,66 +1,97 @@
 
 /**************************************************************************
  *	AUTHOR	         : Eric Yun
- *	ASSIGNMENT #	 : 
+ *	ASSIGNMENT 11	 : Breakfast Billing System
  *	CLASS	         : CS 002
  *	SECTION          : MTRF: 7:00a - 12p
- *	Due Date         : June 20, 2019	
+ *	Due Date         : June 23, 2019	
  **************************************************************************/
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <iomanip>
 using namespace std;
+
+// struct to hold menu items
 struct MenuItem
 {
-	string menuItem;
-	double menuPrice;
+	string menuItem;	// item name
+	double menuPrice;	// item price
 };
 
+// struct to hold customer selections
 struct customerItem
 {
-	int quantity;
-	string menuItem;
-	double menuPrice;
+	int quantity;		// item quantity
+	string menuItem;	// item name
+	double menuPrice;	// item price
 };
 /**************************************************************************
  *
- * TITLE
+ * BREAKFAST BILLING SYSTEM
  *
  *--------------------------------------------------------------------------
- * Program Description
+ * This program will present a menu of items a customer can order and will
+ * 		keep track of the customer's order and output the final price for
+ * 		all the selections.
  *--------------------------------------------------------------------------
  * INPUT:
+ * 		filename : menu with items and price
+ * 		selection: item number
+ * 		quantity : number of items from the selection
  *
  * OUTPUT:
+ * 		menu
+ * 		selections and their quantities
+ * 		total cost including tax
  *
- *--------------------------------------------------------------------------
  ***************************************************************************/
 
 // FUNCTION Prototypes
 /**************************************************************************
- * functionName
- * 		First line of description
- * 		Second line of description
+ * showMenu
+ * 		This function will read in a vector containing the menu items from 
+ * 		an external file and will output the results
  ***************************************************************************/
-void showMenu(vector<MenuItem> m);
-void getData(vector<MenuItem> &m, string filename);
-void printCheck(vector<customerItem> &c);
+void showMenu(vector<MenuItem> m);	// vector to hold menu items and price
+
+/**************************************************************************
+ * getData
+ * 		This function will read in the external file and will write the 
+ * 		the contents to a vector
+ ***************************************************************************/
+void getData(vector<MenuItem> &m, 	// vector to hold menu items and price
+		     string filename);		// INPUT - file name
+
+/**************************************************************************
+ * printCheck
+ * 		This function will calculate the total cost after all selections 
+ * 		and will output the results
+ ***************************************************************************/
+void printCheck(vector<customerItem> &c);	// vector to hold customer
+											// selections
 	
 int main()
 {
-	vector<MenuItem> m;
-	vector<customerItem> c;
-	string filename;
+	// variables
+	vector<MenuItem> m;			// holds the menu items and price
+	vector<customerItem> c;		// holds the customer selection
+	string filename;			// INPUT - file name
+	int selection;				// INPUT - item number selection
+	int quantity;				// INPUT - number of items of selection
 
+	// INPUT - enter file name
 	cout << fixed << setprecision(2);
 	cout << "Enter filename: \n" << endl;
 	cin >> filename;
+
+	// PROCESSING - copy file content to vector
 	getData(m, filename);
+
+	// OUTPUT - print contents of file
 	showMenu(m);
 
-	int selection;
-	int quantity;
+	// INPUT - get item number and quantity
 	do
 	{
 		cout << "Enter 0 when you finish your order.\n";
@@ -84,29 +115,32 @@ int main()
 	} 
 	while(selection != 0);
 
+	// OUTPUT - print final result
 	printCheck(c);
-
-	
-
 }
+
 /************************************************************************
  * 
- * FUNCTION functionName
+ * FUNCTION showMenu
  * 	
  *-----------------------------------------------------------------------
- * Function description
+ * This function will read in a vector containing the menu items from 
+ * 		an external file and will output the results
  *
  *-----------------------------------------------------------------------
  * PRE-CONDITIONS
+ * 		none
  *
  * POST-CONDITIONS
+ * 		prints contents from vector
  *
 *************************************************************************/
-void showMenu(vector<MenuItem> m)
+void showMenu(vector<MenuItem> m) 	// vector to hold contents from file
 {
+	// OUTPUT - prints contents from vector holding menu item info
 	cout << "Welcome to Johnny's Restaurant\n";
 	cout << endl;
-	cout << setw(18) << setfill(' ')  << "Menu\n";
+	cout << setw(18) << setfill(' ') << right << "Menu\n" ;
 	cout << endl;
 	for (int i = 0; i < m.size(); i++)
 	{
@@ -118,22 +152,31 @@ void showMenu(vector<MenuItem> m)
 	cout << endl;
 }
 
-void getData(vector<MenuItem> &m, string filename)
+/************************************************************************
+ * 
+ * FUNCTION getData
+ * 	
+ *-----------------------------------------------------------------------
+ * This function will read in the external file and will write the 
+ * 		the contents to a vector
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		none
+ *
+ * POST-CONDITIONS
+ * 		fills in vector menu items and price
+ *
+*************************************************************************/
+void getData(vector<MenuItem> &m,		// vector to hold contents from file
+		     string filename)			// INTPUT - file name
 {
-	MenuItem menu;
-	ifstream infile;
-	string str;
-	infile.open(filename);
+	//variables 
+	MenuItem menu;		    // from menu item struct
+	ifstream infile;	    // reading in file name
+	infile.open(filename); 	//read file
 
-//	while (getline(infile, str))
-//	{
-//		menu.menuItem = str.substr(0, str.find('$'));
-//		menu.menuPrice = atof((str.substr(str.find('$') + 1,
-//				               str.size())).c_str());
-//		m.push_back({menu.menuItem, menu.menuPrice});
-//		count++;
-//	}
-
+	// PROCESSING - read file and write to vector
 	while (!infile.eof())
 	{
 		getline(infile, menu.menuItem, '$');
@@ -143,20 +186,52 @@ void getData(vector<MenuItem> &m, string filename)
 	}
 }
 
-void printCheck(vector<customerItem> &c)
+/************************************************************************
+ * 
+ * FUNCTION printCheck
+ * 	
+ *-----------------------------------------------------------------------
+ * This function will calculate the total cost after all selections 
+ * 		and will output the results
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		none
+ *
+ * POST-CONDITIONS
+ * 		prints content from vector holding customer selections
+ *
+*************************************************************************/
+void printCheck(vector<customerItem> &c) 	// vector to hold customer
+											// selections
 {
-	double sum = 0;
-	double tax;
-	cout << "SALE\n";
+	// variables
+	double sum = 0;		// total cost minus tax
+	double tax;			// tax cost
+
+	// OUTPUT - prints final result from customer vector
+	cout << "\n\n";
+	cout << "Welcome to Johnny's Restaurant\n";
 	cout << endl;
+	cout << setw(18) << setfill(' ') << right << "SALE\n" ;
+	cout << endl;
+	
 	for (int i = 0; i < c.size(); i++)
 	{
-		cout << c[i].quantity << " "
-		     << c[i].menuItem << " "
-		     << "$" << c[i].menuPrice << endl;
+		cout << setw(3)  << setfill(' ') << left  << c[i].quantity 
+		     << setw(20) << setfill(' ') << left  <<  c[i].menuItem << "$" 
+			 << setw(5)  << setfill(' ') << right << c[i].menuPrice << endl;
 		sum += c[i].menuPrice;
 	}
+
+	// PROCESSING - calculates tax and total cost
 	tax = sum * 0.05;
-	cout << "Tax $"  <<  tax << endl;
-	cout << "Amount Due $"  << sum + tax << endl;
+	cout << "Tax" 
+		 << setw(21) << setfill(' ') << right << "$" 
+		 << setw(5)  << setfill(' ') << right <<   tax << endl;
+	cout << string(29, '-') << endl;
+	cout << "Amount Due" 
+		 << setw(14) << setfill(' ') << right << "$"  
+		 << setw(4)  << setfill(' ') << left << sum + tax << endl;
+	cout << endl;
 }
