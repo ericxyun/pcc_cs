@@ -38,17 +38,168 @@ void computerMode()
 	displayBoards(p.board, c.board);
 
 	// Player 1 board set up
-	cout << "Player 1 set your board." << endl;
-	for (int i = 0; i < 5; i++)
-	{
-		getValidShipInfo(p, i);
-		displayBoards(p.board, c.board);
-	}
+	// cout << "Player 1 set your board." << endl;
+	// for (int i = 0; i < 5; i++)
+    //	{
+    //		getValidShipInfo(p, i);
+    //		displayBoards(p.board, c.board);
+    //	}
+	initFleetComputer(c);
+	displayBoards(p.board, c.board);
 
 	// Computer board set up
 	
 	// TODO: set up vector for computer memory on what 
 	//       which of player's target was hit
+}
+
+void initFleetComputer(PlayerBoard &c)
+
+{
+	srand(time(NULL));
+	struct Array
+	{
+		vector<int> v[2];
+	};
+
+	int row;		        			// random choice row index
+	int col; 		        			// random choice col index
+	char orientation;					// random choice orientation
+	int fleet[] = {5, 4, 3, 3, 2};  	// hold fleet size
+	char orientations[] = {'h', 'v'};	// hold orientation options
+	int count;
+	vector<Point> l1;
+	vector<Point> l2;
+	bool check = true;
+
+	vector<Point> lTemp;
+	vector<Point> l3;
+
+	
+	int arrCount = 0; 	// counter for l3
+	// random number between 0 and 9
+	for (int i = 0; i < 5; i++)
+	{
+		do
+		{
+			row = rand() % 10;
+			col = rand() % 10;
+			orientation = orientations[rand() % 2];
+			count = 0;
+
+			if (orientation == 'v')
+				if (row + fleet[i] <= 10)
+				{
+					int count1 = 0;
+					for (int j = 0; j < fleet[i]; j++)
+					{
+						if (i == 0)
+							count++;
+						else
+						{
+							for (int k = 0; k < l2.size(); k++)
+								if ((row + j != l2[k].rows) &&
+									(col != l2[k].cols)     &&
+									(row != l2[k].rows)     &&
+									(col != l2[k].cols))
+									count1++;
+						}
+					}
+					if (count1 == l2.size())
+						count++;
+				}
+		    else if (orientation == 'h')
+			{
+				if (col + fleet[i] <= 10)
+				{
+					count = 0;
+					for (int j = 0; j < fleet[i]; j++)
+					{
+						if (i == 0)
+							count++;
+						else
+						{
+							for (int k = 0; k < l2.size(); k++)
+							{
+							
+									if ((row != l2[k].rows)    &&
+									   (col + j != l2[k].cols) &&
+									   (row != l2[k].rows)     &&
+									   (col != l2[k].cols))
+											count++;
+							}
+						}
+					}
+				}
+
+			}
+			if (count == fleet[i])
+			{
+				cout << "Count: " << count << endl;
+				check = false;
+			}
+		}
+		while (check == true);
+		check = true;
+
+		cout << "Row: " << row << endl;
+		cout << "Col: " << col << endl;
+		cout << "Orientation: " << orientation << endl;
+
+		for (int j = 0; j < fleet[i]; j++)
+		{
+			if (orientation == 'v')
+			{
+
+				l1.push_back({row, col});
+				lTemp.push_back({row, col});
+				c.board[row][col] = 'S';
+				row++;
+			}
+			else if (orientation == 'h')
+			{
+				l1.push_back({row, col});
+				lTemp.push_back({row, col});
+				c.board[row][col] = 'S';
+				col++;
+			}
+		}
+
+		// increment arrCount because push_back was not possible.
+	    int x;
+		int y;
+		for (int j = 0; j < lTemp.size(); j++)
+			l3.push_back({lTemp[j].rows, lTemp[j].cols});
+		lTemp.clear();
+
+		for (int j = 0; j < l3.size(); j++)
+		{
+			x = l3[j].rows;
+			y = l3[j].cols;
+
+			if (orientation == 'v')
+			{
+				if (j == 0)
+					l2.push_back({x - 1, y});
+				if (j == l3.size() - 1)
+					l2.push_back({x + 1, y});
+				l2.push_back({x, y});
+				l2.push_back({x, y - 1});
+				l2.push_back({x, y + 1});
+			}
+
+			else if (orientation == 'h')
+			{
+				if (j == 0)
+					l2.push_back({x, y - 1});
+				if (j == l3.size() - 1)
+					l2.push_back({x, y + 1});
+				l2.push_back({x, y});
+				l2.push_back({x - 1, y});
+				l2.push_back({x + 1, y});
+			}
+		}
+	}
 }
 
 void twoPlayerMode()

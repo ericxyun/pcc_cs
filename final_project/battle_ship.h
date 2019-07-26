@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 char UNKNOWN = ' ';
@@ -101,3 +103,4 @@ bool gameOver(PlayerBoard &, PlayerBoard &, int &turn);
 
 void twoPlayerMode();
 void computerMode();
+void initFleetComputer(PlayerBoard &);
