@@ -21,6 +21,68 @@
  * OUTPUT:
  *
  ***************************************************************************/
+void compFireShot(PlayerBoard &origin, 
+		          PlayerBoard &target, 
+				  int turn, 
+				  int &turnCount,
+				  vector<Point> &initCompMoves);
+
+void compFireShot(PlayerBoard &origin, 
+		          PlayerBoard &target, 
+				  int turn, 
+				  int &turnCount,
+				  vector<Point> &initCompMoves)
+{
+	int row;
+	int col;
+	int lastElem;
+	int shipIdx;
+	int targetHitCount;
+	int shipHitCapacity;
+	string targetShipName;
+
+	lastElem = initCompMoves.size();
+
+	cout << "turnCount: " << turnCount << endl;
+	if (turnCount < 101)
+	{
+		row = initCompMoves[lastElem - 1].rows;
+		col = initCompMoves[lastElem - 1].cols;
+		cout << initCompMoves.size() << endl;
+		initCompMoves.pop_back();
+		cout << initCompMoves.size() << endl;
+	}
+
+	if (isHit(target, row, col))
+	{
+        shipIdx = targetHit(target, row, col);
+        targetHitCount = ++target.fleet[shipIdx].hitCount;
+	    shipHitCapacity = target.fleet[shipIdx].size;
+		targetShipName = target.fleet[shipIdx].name;
+
+	//	cout << string(100, '-') << endl;
+	//	cout << "Player " << turn << " hit a " << targetShipName << endl;
+	//  cout << "shipIdx: " << shipIdx << endl;
+	//	cout << "shipHitCapacity: " << shipHitCapacity << endl;
+	//  cout << "targetHitCount: " << targetHitCount << endl;
+
+		if (targetHitCount == shipHitCapacity)
+		{
+			cout << "You sunk the " 
+				 << targetShipName << "!!!\n";
+		}
+	}
+		
+}
+
+void compInitDiagonal(vector<Point> &v)
+{
+	for (int i = 0; i < 10; i++)
+		for (int j = 0; j < 10; j++)
+		{
+			v.push_back({i, j});
+		}
+}
 
 int main()
 {
@@ -44,163 +106,47 @@ void computerMode()
     //		getValidShipInfo(p, i);
     //		displayBoards(p.board, c.board);
     //	}
+	for (int i = 0; i < FLEET_SIZE; i++)
+		getValidShipInfo(p, i);
+
 	initFleetComputer(c);
 	displayBoards(p.board, c.board);
 
+	// initialize computer moves
+	vector<Point> initCompMoves;
+	compInitDiagonal(initCompMoves);
 	// Computer board set up
 	
 	// TODO: set up vector for computer memory on what 
 	//       which of player's target was hit
-}
+	// start game
+	int PLAYER = 1;
+	int COMPUTER = 2;
+	int turn = PLAYER;
 
-void initFleetComputer(PlayerBoard &c)
+	int turnCount = 0;
 
-{
-	srand(time(NULL));
-	struct Array
+	// hit target
+	do
 	{
-		vector<int> v[2];
-	};
-
-	int row;		        			// random choice row index
-	int col; 		        			// random choice col index
-	char orientation;					// random choice orientation
-	int fleet[] = {5, 4, 3, 3, 2};  	// hold fleet size
-	char orientations[] = {'h', 'v'};	// hold orientation options
-	int count;
-	vector<Point> l1;
-	vector<Point> l2;
-	bool check = true;
-
-	vector<Point> lTemp;
-	vector<Point> l3;
-
-	
-	int arrCount = 0; 	// counter for l3
-	// random number between 0 and 9
-	for (int i = 0; i < 5; i++)
-	{
-		do
+		if (turn == PLAYER)
 		{
-			row = rand() % 10;
-			col = rand() % 10;
-			orientation = orientations[rand() % 2];
-			count = 0;
-
-			if (orientation == 'v')
-				if (row + fleet[i] <= 10)
-				{
-					int count1 = 0;
-					for (int j = 0; j < fleet[i]; j++)
-					{
-						if (i == 0)
-							count++;
-						else
-						{
-							for (int k = 0; k < l2.size(); k++)
-								if ((row + j != l2[k].rows) &&
-									(col != l2[k].cols)     &&
-									(row != l2[k].rows)     &&
-									(col != l2[k].cols))
-									count1++;
-						}
-					}
-					if (count1 == l2.size())
-						count++;
-				}
-		    else if (orientation == 'h')
-			{
-				if (col + fleet[i] <= 10)
-				{
-					count = 0;
-					for (int j = 0; j < fleet[i]; j++)
-					{
-						if (i == 0)
-							count++;
-						else
-						{
-							for (int k = 0; k < l2.size(); k++)
-							{
-							
-									if ((row != l2[k].rows)    &&
-									   (col + j != l2[k].cols) &&
-									   (row != l2[k].rows)     &&
-									   (col != l2[k].cols))
-											count++;
-							}
-						}
-					}
-				}
-
-			}
-			if (count == fleet[i])
-			{
-				cout << "Count: " << count << endl;
-				check = false;
-			}
-		}
-		while (check == true);
-		check = true;
-
-		cout << "Row: " << row << endl;
-		cout << "Col: " << col << endl;
-		cout << "Orientation: " << orientation << endl;
-
-		for (int j = 0; j < fleet[i]; j++)
-		{
-			if (orientation == 'v')
-			{
-
-				l1.push_back({row, col});
-				lTemp.push_back({row, col});
-				c.board[row][col] = 'S';
-				row++;
-			}
-			else if (orientation == 'h')
-			{
-				l1.push_back({row, col});
-				lTemp.push_back({row, col});
-				c.board[row][col] = 'S';
-				col++;
-			}
+			fireShot(p, c, turn);
+			displayBoards(p.board, c.board);
 		}
 
-		// increment arrCount because push_back was not possible.
-	    int x;
-		int y;
-		for (int j = 0; j < lTemp.size(); j++)
-			l3.push_back({lTemp[j].rows, lTemp[j].cols});
-		lTemp.clear();
-
-		for (int j = 0; j < l3.size(); j++)
+		else if (turn == COMPUTER)
 		{
-			x = l3[j].rows;
-			y = l3[j].cols;
-
-			if (orientation == 'v')
-			{
-				if (j == 0)
-					l2.push_back({x - 1, y});
-				if (j == l3.size() - 1)
-					l2.push_back({x + 1, y});
-				l2.push_back({x, y});
-				l2.push_back({x, y - 1});
-				l2.push_back({x, y + 1});
-			}
-
-			else if (orientation == 'h')
-			{
-				if (j == 0)
-					l2.push_back({x, y - 1});
-				if (j == l3.size() - 1)
-					l2.push_back({x, y + 1});
-				l2.push_back({x, y});
-				l2.push_back({x - 1, y});
-				l2.push_back({x + 1, y});
-			}
+			compFireShot(c, p, turn, turnCount, initCompMoves);
+			displayBoards(p.board, c.board);
+			turnCount++;
+			
 		}
+		switchPlayers(turn);
 	}
+	while (!gameOver(p, c, turn));
 }
+
 
 void twoPlayerMode()
 {
@@ -459,61 +405,61 @@ void getValidShipInfo(PlayerBoard & p,
 	ifstream infile;
 	infile.open("test.txt");
 
-//	do 
-//	{
-//		// INPUT - get necessary values to place ships
-//		cout << "Enter the starting coordinates of your "
-//			 << p.fleet[shipIndex].name << ": ";
-//		infile >> ch;
-//		infile	>> col;
-//		row = ch - 65;
-//		col = col - 1;
-//		cout << endl;
-//
-//		cout << "Enter the orientation of your carrier "
-//			 << "(horizontal(h) or vertical(v)): ";
-//		infile >> orientation;
-//		cout << endl;
-//
-//		if (spaceOccupied(p,
-//						  row,
-//						  col,
-//						  orientation,
-//						  p.fleet[shipIndex].size))
-//	    {
-//			cout << "Error: Ship placement is outside the board.";
-//			cout << endl;
-//	    }
-//	}
-//	while (spaceOccupied(p,
-//				         row,
-//						 col,
-//						 orientation,
-//						 p.fleet[shipIndex].size));
-
-
-	cout << "Enter the starting coordinates of your "
-		 << p.fleet[shipIndex].name << ": ";
-	cin >> ch;
-	cin	>> col;
-	row = ch - 65;
-	col = col - 1;
-	cout << endl;
-
-	cout << "Enter the orientation of your carrier "
-		 << "(horizontal(h) or vertical(v)): ";
-	cin >> orientation;
-	cout << endl;
-
-	if (spaceOccupied(p,
-					  row,
-					  col,
-					  orientation,
-					  p.fleet[shipIndex].size))
+	do 
 	{
-		cout << "Error: Ship placement is outside the board.";
+		// INPUT - get necessary values to place ships
+		cout << "Enter the starting coordinates of your "
+			 << p.fleet[shipIndex].name << ": ";
+		infile >> ch;
+		infile	>> col;
+		row = ch - 65;
+		col = col - 1;
 		cout << endl;
+
+		cout << "Enter the orientation of your carrier "
+			 << "(horizontal(h) or vertical(v)): ";
+		infile >> orientation;
+		cout << endl;
+
+		if (spaceOccupied(p,
+						  row,
+						  col,
+						  orientation,
+						  p.fleet[shipIndex].size))
+	    {
+			cout << "Error: Ship placement is outside the board.";
+			cout << endl;
+	    }
 	}
+	while (spaceOccupied(p,
+				         row,
+						 col,
+						 orientation,
+						 p.fleet[shipIndex].size));
+
+
+//	cout << "Enter the starting coordinates of your "
+//		 << p.fleet[shipIndex].name << ": ";
+//	cin >> ch;
+//	cin	>> col;
+//	row = ch - 65;
+//	col = col - 1;
+//	cout << endl;
+//
+//	cout << "Enter the orientation of your carrier "
+//		 << "(horizontal(h) or vertical(v)): ";
+//	cin >> orientation;
+//	cout << endl;
+//
+//	if (spaceOccupied(p,
+//					  row,
+//					  col,
+//					  orientation,
+//					  p.fleet[shipIndex].size))
+//	{
+//		cout << "Error: Ship placement is outside the board.";
+//		cout << endl;
+//	}
 
 	// determine which spaces will be taken
 	// and save to PlayerBoard space
@@ -669,4 +615,170 @@ void clearScreen()
 	cout << endl;
 	cout << "\033c";
 	cout << endl;
+}
+
+void initFleetComputer(PlayerBoard &c)
+
+{
+	srand(time(NULL));
+	struct Array
+	{
+		vector<int> v[2];
+	};
+
+	int row;		        			// random choice row index
+	int col; 		        			// random choice col index
+	char orientation;					// random choice orientation
+	int fleet[] = {5, 4, 3, 3, 2};  	// hold fleet size
+	char orientations[] = {'h', 'v'};	// hold orientation options
+	int count;
+	vector<Point> l1;
+	vector<Point> l2;
+	vector<Point> l3;
+	vector<Point> lTemp;
+	bool check = true;
+
+	Point onePoint;
+
+	
+	int arrCount = 0; 	// counter for l3
+	// random number between 0 and 9
+	for (int i = 0; i < 5; i++)
+	{
+		do
+		{
+			row = rand() % 10;
+			col = rand() % 10;
+			orientation = orientations[rand() % 2];
+			count = 0;
+			onePoint.rows = row;
+			onePoint.cols = col;
+
+			if (orientation == 'v')
+			{
+				if (row + fleet[i] <= 10)
+				{
+						for (int j = 0; j < fleet[i]; j++)
+						{
+							if (i == 0)
+							{
+								count++;
+							}
+							else if ((checkInList(l2, onePoint.rows,
+										onePoint.cols))
+								     && (checkInList(l2, row + j, col)))
+								count++;
+						}
+				}
+			}
+		    else if (orientation == 'h')
+			{
+				if (col + fleet[i] <= 10)
+				{
+					count = 0;
+					for (int j = 0; j < fleet[i]; j++)
+					{
+						if (i == 0)
+						{
+							count++;
+						}
+						else if ((checkInList(l2, onePoint.rows, onePoint.cols))
+								 && (checkInList(l2, row, col + j)))
+							count++;
+					}
+				}
+
+			}
+			if (count == fleet[i])
+			{
+				check = false;
+			}
+		}
+		while (check == true);
+		check = true;
+
+	//	cout << "Row: " << row << endl;
+	//	cout << "Col: " << col << endl;
+	//	cout << "Orientation: " << orientation << endl;
+
+		for (int j = 0; j < fleet[i]; j++)
+		{
+			if (orientation == 'v')
+			{
+
+				l1.push_back({row, col});
+				lTemp.push_back({row, col});
+				c.fleet[i].space.push_back({row, col});
+				c.board[row][col] = 'S';
+				row++;
+			}
+			else if (orientation == 'h')
+			{
+				l1.push_back({row, col});
+				lTemp.push_back({row, col});
+				c.fleet[i].space.push_back({row, col});
+				c.board[row][col] = 'S';
+				col++;
+			}
+		}
+
+		// increment arrCount because push_back was not possible.
+	    int x;
+		int y;
+		for (int j = 0; j < lTemp.size(); j++)
+			l3.push_back({lTemp[j].rows, lTemp[j].cols});
+		lTemp.clear();
+		// This makes it work for some reason
+	//	for (int r =0; r < l2.size(); r++)
+
+
+		for (int j = 0; j < l3.size(); j++)
+		{
+			x = l3[j].rows;
+			y = l3[j].cols;
+
+			if (orientation == 'v')
+			{
+				if (j == 0)
+					l2.push_back({x - 1, y});
+				if (j == l3.size() - 1)
+					l2.push_back({x + 1, y});
+				l2.push_back({x, y});
+				l2.push_back({x, y - 1});
+				l2.push_back({x, y + 1});
+			}
+
+			else if (orientation == 'h')
+			{
+				if (j == 0)
+					l2.push_back({x, y - 1});
+				if (j == l3.size() - 1)
+					l2.push_back({x, y + 1});
+				l2.push_back({x, y});
+				l2.push_back({x - 1, y});
+				l2.push_back({x + 1, y});
+			}
+		}
+	}
+}
+
+bool checkInList(vector<Point> &l, int row, int col)
+{
+	vector<Point> p; 
+	p.push_back({row, col});
+	int count = 0;
+	for (int i = 0; i < l.size(); i++)
+	{
+		if (p[0] == l[i])
+		{
+			return false;
+		}
+		else
+		{
+			count++;
+		}
+	}
+	if (count == l.size())
+		return true;
+	return false;
 }

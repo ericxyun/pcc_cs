@@ -23,6 +23,8 @@ struct Point
 {
 	int rows;
 	int cols;
+	bool operator==(const Point& rhs){return (rows == rhs.rows && cols ==
+			rhs.cols);}
 };
 
 struct Ship
@@ -104,3 +106,4 @@ bool gameOver(PlayerBoard &, PlayerBoard &, int &turn);
 void twoPlayerMode();
 void computerMode();
 void initFleetComputer(PlayerBoard &);
+bool checkInList(vector<Point> &l, int row, int col);
