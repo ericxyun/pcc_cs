@@ -97,4 +97,7 @@ int targetHit(PlayerBoard &,
 		      int row,
 			  int col);
 
-bool gameOver(PlayerBoard &, PlayerBoard &);
+bool gameOver(PlayerBoard &, PlayerBoard &, int &turn);
+
+void twoPlayerMode();
+void computerMode();

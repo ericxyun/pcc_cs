@@ -262,7 +262,8 @@ void getValidShipInfo(PlayerBoard & p,
 		// INPUT - get necessary values to place ships
 		cout << "Enter the starting coordinates of your "
 			 << p.fleet[shipIndex].name << ": ";
-		cin >> ch >> col;
+		cin >> ch;
+		cin >> col;
 		row = ch - 65;
 		col = col - 1;
 		cout << endl;
@@ -280,6 +281,10 @@ void getValidShipInfo(PlayerBoard & p,
 			cout << "Error: Ship placement is outside the board.";
 			cout << endl;
 	    }
+		if (cin.fail())
+		{
+			cout << "cin is in the fail state\n";
+		}
 	}
 	while (spaceOccupied(p,
 				         row,
