@@ -500,14 +500,36 @@ void getValidShipInfo(PlayerBoard & p,
 		 << p.fleet[shipIndex].name << ": ";
 	cin >> ch;
 	cin	>> col;
-	row = ch - 65;
+	row = toupper(ch) - 65;
 	col = col - 1;
 	cout << endl;
+
+	while (row < 0 ||
+		   row > 9 || 
+		   col < 0 ||
+		   col > 9)
+	{
+		cout << "Enter a valid starting coordinate: " << endl;
+		cin >> ch;
+		cin	>> col;
+		row = toupper(ch) - 65;
+		col = col - 1;
+		cout << endl;
+	}
+
 
 	cout << "Enter the orientation of your carrier "
 		 << "(horizontal(h) or vertical(v)): ";
 	cin >> orientation;
 	cout << endl;
+	
+	while (orientation != 'v' && orientation != 'h')
+	{
+		cout << "Enter a valid orientation: " << endl;
+		cin >> orientation;
+		cout << endl;
+	}
+
 
 	if (spaceOccupied(p,
 					  row,
