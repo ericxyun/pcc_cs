@@ -1,27 +1,76 @@
+/**************************************************************************
+ *	AUTHOR	 : Eric Yun
+ *	Lab #	 : Roman Numerals
+ *	CLASS	 : CS 3A
+ *	SECTION  : MTRF: 7:00a - 12p
+ *	Due Date : June 20, 2019	
+ **************************************************************************/
 #include <iostream>
 using namespace std;
 
+/**************************************************************************
+ *
+ * ROMAN NUMERALS 
+ *
+ *--------------------------------------------------------------------------
+ * This program will convert roman numerals into decimal digits and vice 
+ * 		versa
+ *--------------------------------------------------------------------------
+ * INPUT:
+ * 		menu_selection: select conversion type	
+ * 		n             : user digit input
+ *		str           : user string input
+ * OUTPUT:
+ * 		digit_result: resulting roman numeral conversion
+ * 		roman_result: resulting digit conversion
+ *
+ ***************************************************************************/
 
+// FUNCTION Prototypes
+/**************************************************************************
+ * roman_digit
+ * 		This converts will take the user input digit and convert it into
+ * 		roman numerals
+ *
+ ***************************************************************************/
 string roman_digit(int n,			// user input
 		           string one,		// roman number containing 1
 				   string five, 	// roman number containing 5
 				   string ten);		// roman number containing 10
 
 
+/**************************************************************************
+ * convert_digit
+ * 		This function will take a single digit from the user input and 
+ * 		convert it into a roman numeral digit
+ *
+ ***************************************************************************/
 string convert_digit(int n,						// digit from input
 				     string &roman_ones,		// roman ones digit
 				     string &roman_tens,		// roman tens digit
 				     string &roman_hundreds,	// roman hundreds digit
 				     string &roman_thousands);	// roman thousands digit
 
+/**************************************************************************
+ * digit_roman 
+ * 		This function will take in a user input string as a parameter and 
+ * 		will convert it into decimal digits.
+ *
+ ***************************************************************************/
 int digit_roman(string str);	// user input string
 
+/**************************************************************************
+ * convert_roman
+ * 		This function will take in a single character from the user input
+ * 		string and convert return a converted decimal digit.
+ *
+ ***************************************************************************/
 int convert_roman(char c);		// character from user input string
 
 int main()
 {
 	char menu_selection;		// input for conversion type
-	int input_int;				// integer inputer
+	int input_int;				// integer input
 	int count;					// counter
 	int digit_result;			// result for roman to digit
 	string roman_result;		// result for digit to roman
@@ -43,7 +92,7 @@ int main()
 
 	while ((menu_selection != 'a') && (menu_selection != 'b'));
 
-	// Decimal to roman conversion
+	// PROCESSING - Decimal to roman conversion
 	if (menu_selection == 'a')
 	{
 		cout << "Input an integer less than 4000: " << endl;
@@ -56,7 +105,7 @@ int main()
 		cout << roman_result << endl;
 	}
 
-	// Roman to decimal conversion
+	// PROCESSING - Roman to decimal conversion
 	else if (menu_selection == 'b')
 	{
 		cout << "Input a roman digit: ";
@@ -68,7 +117,25 @@ int main()
 
 	
 }
-int convert_roman(char c)
+
+
+/************************************************************************
+ * 
+ * FUNCTION convert_roman
+ * 	
+ *-----------------------------------------------------------------------
+ * This function will take in a single character from the user input
+ * 		string and convert return a converted decimal digit.
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		None
+ *
+ * POST-CONDITIONS
+ * 		Converts the inputed character into an integer
+ *
+*************************************************************************/
+int convert_roman(char c)	// single character from user input string
 {
     if (c == 'I') 
         return 1; 
@@ -87,11 +154,27 @@ int convert_roman(char c)
 	return -1;
 }
 
+/************************************************************************
+ * 
+ * FUNCTION digit_roman
+ * 	
+ *-----------------------------------------------------------------------
+ * This function will take in a user input string as a parameter and 
+ * 		will convert it into decimal digits.
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		None
+ *
+ * POST-CONDITIONS
+ *		Returns the converted decimal integer 		
+ *
+*************************************************************************/
 int digit_roman(string str)
 {
-	int result;
-	int current;
-	int next;
+	int result;		// converted digit
+	int current;	// current digit in for loop
+	int next;		// subsequent digit in for loop
 
 	result = 0;
 
@@ -119,12 +202,27 @@ int digit_roman(string str)
 	return result;
 }
 
-string convert_digit(int n,
-				   string &roman_ones,
-				   string &roman_tens,
-				   string &roman_hundreds,
-				   string &roman_thousands)
-{
+/************************************************************************
+ * 
+ * FUNCTION convert_digit
+ * 	
+ *-----------------------------------------------------------------------
+ * This function will take a single digit from the user input and 
+ * 		convert it into a roman numeral digit
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		None
+ *
+ * POST-CONDITIONS
+ * 		Converts the inputed decimal digit and returns a string
+ *
+*************************************************************************/
+string convert_digit(int n,						// digit from input
+				     string &roman_ones,		// roman ones digit
+				     string &roman_tens,		// roman tens digit
+				     string &roman_hundreds,	// roman hundreds digit
+				     string &roman_thousands)	// roman thousands digit
 	int count;
 	string roman_number;
 	count = 0;
@@ -160,10 +258,26 @@ string convert_digit(int n,
 
 }
 
-string roman_digit(int n,
-		           string one,
-				   string five, 
-				   string ten)
+/************************************************************************
+ * 
+ * FUNCTION roman_digit
+ * 	
+ *-----------------------------------------------------------------------
+ * This converts will take the user input digit and convert it into
+ * 		roman numerals
+ *
+ *-----------------------------------------------------------------------
+ * PRE-CONDITIONS
+ * 		None
+ *
+ * POST-CONDITIONS
+ * 		Returns a roman numeral string
+ *
+*************************************************************************/
+string roman_digit(int n,			// user input
+		           string one,		// roman number containing 1
+				   string five, 	// roman number containing 5
+				   string ten)		// roman number containing 10
 {
 
 	string roman_letter;
