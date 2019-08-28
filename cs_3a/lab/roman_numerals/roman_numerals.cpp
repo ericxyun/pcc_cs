@@ -112,10 +112,7 @@ int main()
 		cin >> input_str;
 		digit_result = digit_roman(input_str);
 		cout << digit_result << endl;
-
 	}
-
-	
 }
 
 
@@ -223,9 +220,12 @@ string convert_digit(int n,						// digit from input
 				     string &roman_tens,		// roman tens digit
 				     string &roman_hundreds,	// roman hundreds digit
 				     string &roman_thousands)	// roman thousands digit
+{
 	int count;
 	string roman_number;
+	
 	count = 0;
+
 	while (n > 0)
 	{
 		if (count == 0)
@@ -236,26 +236,23 @@ string convert_digit(int n,						// digit from input
 		else if (count == 1)
 		{
 			roman_tens = roman_digit(n % 10, "X", "L", "C");
-			roman_number = roman_tens + roman_ones;
+			roman_number = roman_tens + roman_number;
 		}
 		else if (count == 2)
 		{
 			roman_hundreds = roman_digit(n % 10, "C", "D", "M");
-			roman_number = roman_hundreds + roman_tens + roman_ones;
+			roman_number = roman_hundreds + roman_number;
 		}
 		else
 		{
 			roman_thousands = roman_digit(n % 10, "M", "M", "M");
-			roman_number = roman_thousands + 
-				           roman_hundreds + 
-						   roman_tens + 
-						   roman_ones;
+			roman_number = roman_thousands + roman_number;
 		}
 		n = n / 10;
 		count++;
 	}
-	return roman_number;
 
+	return roman_number;
 }
 
 /************************************************************************
@@ -279,8 +276,8 @@ string roman_digit(int n,			// user input
 				   string five, 	// roman number containing 5
 				   string ten)		// roman number containing 10
 {
-
 	string roman_letter;
+
 	if ((n < 4) && (n > 0))
 	{
 		roman_letter = one;
@@ -307,9 +304,8 @@ string roman_digit(int n,			// user input
 	{
 		roman_letter = one + ten;
 	}
-	return roman_letter;
-		
 
+	return roman_letter;
 }
 
 
