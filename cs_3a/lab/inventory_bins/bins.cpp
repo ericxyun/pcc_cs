@@ -253,6 +253,7 @@ int main()
 	displayInventory(bins);
 	do 
 	{
+		// TODO: move lines below "displayMenu" to function
 		displayMenu(selection);
 		cout << endl;
 		cout << "Selection: ";
