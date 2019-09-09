@@ -58,28 +58,34 @@ void alphabetize(Student student[],
 	for (int i = 0; i < size; i++)
 	{
 		ordered_index[i] = i;
-		cout << student[i].last_name << endl;
 	}
-	cout << endl;
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size-1; i++)
 	{
 		min = i;
-		current = student[i].last_name[0];
-		if (i + 1 < size)
+		current = student[ordered_index[i]].last_name[0];
+		for (int j = i+1; j < size; j++) 
 		{
-			for (int j = i+1; j < size; j++) 
+			next = student[ordered_index[j]].last_name[0];
+			if (current > next)
 			{
-				next = student[j].last_name[0];
-				if (current > next)
-				{
-					min = j;
-				}
+				min = j;
 			}
 		}
+
 		int temp = ordered_index[i];
 		ordered_index[i] = ordered_index[min];
 		ordered_index[min] = temp;
+
+		for (int k = 0; k < size; k++)
+		{
+			int x = ordered_index[k];
+			cout << student[x].last_name << endl;
+		}
+
+		cout << endl;
+		cout << "--------------" << endl;
+		cout << endl;
 	}
 
 	int idx;
@@ -87,7 +93,6 @@ void alphabetize(Student student[],
 	{
 		
 		idx = ordered_index[i];
-		cout << idx << endl;
 		cout << student[idx].last_name << endl;
 	}
 }
