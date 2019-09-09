@@ -1,6 +1,5 @@
-
 /**************************************************************************
- *	AUTHOR	 : Eric Yun
+ *	AUTHOR	 : Eric Yun & Edgar Ayala
  *	Lab #	 : 
  *	CLASS	 : CS 002
  *	SECTION  : MTRF: 7:00a - 12p
