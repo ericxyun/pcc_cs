@@ -1,0 +1,12 @@
+#!/home/eyun89/anaconda3/bin/python
+
+import img2pdf
+import sys
+import re
+from wand.image import Image
+
+image = "file.png"
+regex = "(.*)(?:\.\w+)"
+with Image(filename=image) as img:
+    print(img.size)
+
