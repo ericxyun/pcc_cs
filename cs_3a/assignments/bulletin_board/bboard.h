@@ -3,9 +3,8 @@
 #include <vector>
 #include <fstream>
 #include "user.h"
-#include "user.cpp"
 #include "message.h"
-#include "message.cpp"
+#include "cstdlib"
 using namespace std;
 
 /****************************************************************

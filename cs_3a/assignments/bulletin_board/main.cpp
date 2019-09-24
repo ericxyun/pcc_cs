@@ -1,6 +1,5 @@
 #include <iostream>
 #include "bboard.h"
-#include "bboard.cpp"
 using namespace std;
 
 int main(int argc, char **argv)

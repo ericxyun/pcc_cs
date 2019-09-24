@@ -1,3 +1,5 @@
+#include "message.h"
+
 Message::Message()
 {
 	author = "default";
@@ -19,5 +21,5 @@ void Message::display(int msg_num,
 {
 	cout << "-----------------------------------------------\n";
 	cout << "Message #" << msg_num + 1 << " : " << subject << endl;
-	cout << "from " << name << " : " << body << endl;
+	cout << "from " << name << ": " << body << endl;
 }

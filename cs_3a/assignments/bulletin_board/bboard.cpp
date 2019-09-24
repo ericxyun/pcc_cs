@@ -1,3 +1,4 @@
+#include "bboard.h"
 BBoard::BBoard()
 {
 	title = "default";
@@ -74,15 +75,18 @@ void BBoard::run()
 	{
 		char selection;
 		cout << "Menu\n";
-		cout << " - Display Messages ('D' or 'd')\n";
-		cout << " - Add New Message ('N' or 'n')\n";
-		cout << " - Quit ('Q' or 'q')\n";
-		cout << "Choose an action:\n";
+		cout << "  - Display Messages ('D' or 'd')\n";
+		cout << "  - Add New Message ('N' or 'n')\n";
+		cout << "  - Quit ('Q' or 'q')\n";
+		cout << "Choose an action: \n";
 		cin >> selection;
 		if (tolower(selection) == 'd')
 		{
 			// message.display
-			display();
+			if (message_list.size() == 0)
+				cout << "Nothing to display\n" ;
+			else
+				display();
 		}
 		else if (tolower(selection) == 'n')
 		{
@@ -148,4 +152,5 @@ void BBoard::add_message()
 	// TODO: remove
 	message_list.push_back(m);
 	cout << "Message Recorded!\n";
+	cout << endl;
 }

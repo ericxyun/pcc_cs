@@ -1,3 +1,4 @@
+#include "user.h"
 User::User()
 {
 	username = "default";
@@ -13,7 +14,8 @@ User::User(const string &uname,
 
 void User::display()
 {
-	cout << "Welcome back " << username << endl;
+	cout << "Welcome back " << username << "!" << endl;
+	cout << endl;
 }
 
 
