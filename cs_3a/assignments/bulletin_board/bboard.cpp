@@ -1,4 +1,18 @@
 #include "bboard.h"
+
+/**********************************************************
+*
+* Constructor BBoard: class BBoard
+*_________________________________________________________
+* This constructor initializes the User object to the 
+* 	default values
+*_________________________________________________________
+* Pre-conditions
+*   the following need previously defined values:
+*   none
+* Post-conditions
+*  none
+***********************************************************/
 BBoard::BBoard()
 {
 	title = "default";
@@ -7,6 +21,19 @@ BBoard::BBoard()
 	message_list = {};
 }
 
+/**********************************************************
+*
+* Constructor BBoard: class BBoard
+*_________________________________________________________
+* This constructor initializes the User object to the 
+* 	user-defined values
+*_________________________________________________________
+* Pre-conditions
+*   the following need previously defined values:
+*   	ttl - title
+* Post-conditions
+*  none
+***********************************************************/
 BBoard::BBoard(const string &ttl)	// title
 {
 	title = ttl;
@@ -15,13 +42,27 @@ BBoard::BBoard(const string &ttl)	// title
 	message_list = {};
 }
 
-
-void BBoard::setup(const string &input_file)
+/**********************************************************
+*
+* Method setup: Class BBoard
+*_________________________________________________________
+* This method will import all users from a input text
+*	file and store them as User objects in a the vector 
+* 	user_list
+*_________________________________________________________
+* PRE-CONDITIONS
+*   The following need previously defined values:
+* 		input_file: input filename
+*
+* POST-CONDITIONS
+*     This function will update the user_list User object
+***********************************************************/
+void BBoard::setup(const string &input_file)	// filename
 {
-	string n;
-	string p;
-	string end;
-	ifstream infile;
+	string n; 		 	// name
+	string p;		  	// password
+	ifstream infile;	// input file
+
 	infile.open(input_file);
 	int i = 0;
 	while (!infile.eof())
@@ -36,24 +77,39 @@ void BBoard::setup(const string &input_file)
 	}
 }
 
+/**********************************************************
+*
+* Method login: Class BBoard
+*_________________________________________________________
+* this method will ask for valid username of password
+* 	it will continue to ask until valid username and password
+*_________________________________________________________
+* pre-conditions
+* 	none
+*
+* post-conditions
+* 	this function will update the current_user if there is a
+* 	matching username and password
+***********************************************************/
 void BBoard::login()
 {
-	string uname;
-	string passwd;
-	cout << "Enter your username (\"Q\" or \"q\" to quit): \n";
+	string uname;	// input - username
+	string passwd;	// password - password
+
+	cout << "enter your username (\"q\" or \"q\" to quit): \n";
 	cin >> uname;
-	if ((uname != "Q") && (uname != "q"))
+	if ((uname != "q") && (uname != "q"))
 	{
-		cout << "Enter your password: \n";
+		cout << "enter your password: \n";
 		cin >> passwd;
 		if (!user_exists(uname, passwd))
 		{
 			do
 			{
-			cout << "Invalid Username or Password!\n";
-			cout << "Enter your username (\"Q\" or \"q\" to quit): \n";
+			cout << "invalid username or password!\n";
+			cout << "enter your username (\"q\" or \"q\" to quit): \n";
 			cin >> uname;
-			cout << "Enter your password: \n";
+			cout << "enter your password: \n";
 			cin >> passwd;
 			}
 			while (!user_exists(uname,passwd));
@@ -64,27 +120,42 @@ void BBoard::login()
 	}
 	else
 	{
-		cout << "Bye!\n";
+		cout << "bye!\n";
 		exit(0);
 	}
 }
 
+/**********************************************************
+*
+* method run: class bboard
+*_________________________________________________________
+* this method will present a menu selection for the user to
+* 	choose from either display messags, add new messages, or
+* 	quit
+*_________________________________________________________
+* pre-conditions
+* 	none
+*
+* post-conditions
+* 	this function relays the user to other functions depending
+* 	on their selection
+***********************************************************/
 void BBoard::run()
 {
 	do
 	{
-		char selection;
-		cout << "Menu\n";
-		cout << "  - Display Messages ('D' or 'd')\n";
-		cout << "  - Add New Message ('N' or 'n')\n";
-		cout << "  - Quit ('Q' or 'q')\n";
-		cout << "Choose an action: \n";
+		char selection;		// input - user selection
+
+		cout << "menu\n";
+		cout << "  - display messages ('d' or 'd')\n";
+		cout << "  - add new message ('n' or 'n')\n";
+		cout << "  - quit ('q' or 'q')\n";
+		cout << "choose an action: \n";
 		cin >> selection;
 		if (tolower(selection) == 'd')
 		{
-			// message.display
 			if (message_list.size() == 0)
-				cout << "Nothing to display\n" ;
+				cout << "nothing to display\n" ;
 			else
 				display();
 		}
@@ -94,7 +165,7 @@ void BBoard::run()
 		}
 		else if (tolower(selection) == 'q')
 		{
-			cout << "Bye!\n";
+			cout << "bye!\n";
 			exit(0);
 		}
 	}
@@ -107,10 +178,26 @@ void BBoard::add_user(istream &infile,
 {}
 
 
-bool BBoard::user_exists(const string &name,
-				         const string &pass) const
+/**********************************************************
+*
+* method user_exists: class bboard
+*_________________________________________________________
+* this function checks to see if there is a matching 
+* 	username and password
+*_________________________________________________________
+* pre-conditions
+*   the following need previously defined values:
+*   	name - username
+*   	pass - password
+*
+* post-conditions
+* 	returns a boolean if there is a mtaching username and
+* 	password
+***********************************************************/
+bool BBoard::user_exists(const string &name,		// username
+				         const string &pass) const	// password
 {
-	User usr(name, pass);
+	user usr(name, pass);	
 	for (int i = 0; i < user_list.size(); i++)
 	{
 		if (user_list[i] == usr)
@@ -121,12 +208,40 @@ bool BBoard::user_exists(const string &name,
 	return false;
 }
 
-User BBoard::get_user(const string &name, 
-		              const string &pass)
+/**********************************************************
+*
+* method get_user: class bboard
+*_________________________________________________________
+* this function returns a user object of a user in the 
+* 	user list
+*_________________________________________________________
+* pre-conditions
+*   the following need previously defined values:
+*   	name - username
+*   	pass - password
+*
+* post-conditions
+* 	returns a user object
+***********************************************************/
+User BBoard::get_user(const string &name, 	// username
+		              const string &pass)	// password
 {
 	User u(name, pass);
 	return u;
 }
+
+/**********************************************************
+*
+* Method display: class bboard
+*_________________________________________________________
+* This function displays the contents of the BBoard object
+*_________________________________________________________
+* Pre-conditions
+* 	none
+*
+* Post-conditions
+* 	none
+***********************************************************/
 void BBoard::display() const
 {
 	string author;
@@ -139,17 +254,31 @@ void BBoard::display() const
 	cout << endl;
 
 }
+
+/**********************************************************
+*
+* method add_messages: class bboard
+*_________________________________________________________
+* This function will add new messages to the message_list
+* object
+*_________________________________________________________
+* pre-conditions
+* 	none
+*
+* post-conditions
+* 	Updates the contents of the message_list object
+***********************************************************/
 void BBoard::add_message()
 {
-	string subj;
-	string bdy;
+	string subj;	// subject
+	string bdy;		// body
+
 	cin.ignore();
 	cout << "Enter Subject: ";
 	getline(cin, subj);
 	cout << "Enter Body: ";
 	getline(cin, bdy);
 	Message m(current_user.get_name(), subj, bdy);
-	// TODO: remove
 	message_list.push_back(m);
 	cout << "Message Recorded!\n";
 	cout << endl;
