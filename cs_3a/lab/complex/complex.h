@@ -10,10 +10,12 @@ class Complex
 		Complex();
 		Complex(double);
 		Complex(double, double);
-		bool operator==(const Complex& ro) const;
-		Complex operator+(const Complex& ro) const;
-		Complex operator-(const Complex& ro) const;
-		Complex operator*(const Complex& ro) const;
+		bool operator == (const Complex& ro) const;
+		Complex operator + (const Complex& ro) const;
+		Complex operator - (const Complex& ro) const;
+		Complex operator * (const Complex& ro) const;
+		friend ostream& operator << (ostream &out, const Complex &c);
+		friend istream& operator >> (istream &in, Complex &c);
 		void display();
 };
 

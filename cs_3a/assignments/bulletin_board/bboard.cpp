@@ -96,20 +96,20 @@ void BBoard::login()
 	string uname;	// input - username
 	string passwd;	// password - password
 
-	cout << "enter your username (\"q\" or \"q\" to quit): \n";
+	cout << "Enter your username (\"Q\" or \"q\" to quit): \n";
 	cin >> uname;
-	if ((uname != "q") && (uname != "q"))
+	if ((uname != "Q") && (uname != "q"))
 	{
-		cout << "enter your password: \n";
+		cout << "Enter your password: \n";
 		cin >> passwd;
 		if (!user_exists(uname, passwd))
 		{
 			do
 			{
-			cout << "invalid username or password!\n";
-			cout << "enter your username (\"q\" or \"q\" to quit): \n";
+			cout << "Invalid username or password!\n";
+			cout << "Enter your username (\"q\" or \"q\" to quit): \n";
 			cin >> uname;
-			cout << "enter your password: \n";
+			cout << "Enter your password: \n";
 			cin >> passwd;
 			}
 			while (!user_exists(uname,passwd));
@@ -120,7 +120,7 @@ void BBoard::login()
 	}
 	else
 	{
-		cout << "bye!\n";
+		cout << "Bye!\n";
 		exit(0);
 	}
 }
@@ -146,16 +146,16 @@ void BBoard::run()
 	{
 		char selection;		// input - user selection
 
-		cout << "menu\n";
-		cout << "  - display messages ('d' or 'd')\n";
-		cout << "  - add new message ('n' or 'n')\n";
-		cout << "  - quit ('q' or 'q')\n";
-		cout << "choose an action: \n";
+		cout << "Menu\n";
+		cout << "  - Display Messages ('D' or 'd')\n";
+		cout << "  - Add New Message ('N' or 'n')\n";
+		cout << "  - Quit ('Q' or 'q')\n";
+		cout << "Choose an action: \n";
 		cin >> selection;
 		if (tolower(selection) == 'd')
 		{
 			if (message_list.size() == 0)
-				cout << "nothing to display\n" ;
+				cout << "Nothing to display\n" ;
 			else
 				display();
 		}
@@ -165,7 +165,7 @@ void BBoard::run()
 		}
 		else if (tolower(selection) == 'q')
 		{
-			cout << "bye!\n";
+			cout << "Bye!\n";
 			exit(0);
 		}
 	}
@@ -197,7 +197,7 @@ void BBoard::add_user(istream &infile,
 bool BBoard::user_exists(const string &name,		// username
 				         const string &pass) const	// password
 {
-	user usr(name, pass);	
+	User usr(name, pass);	
 	for (int i = 0; i < user_list.size(); i++)
 	{
 		if (user_list[i] == usr)
