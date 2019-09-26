@@ -1,3 +1,5 @@
+#include "complex.h"
+#include <regex>
 Complex::Complex()
 {
 	real = 0;
@@ -54,7 +56,7 @@ Complex Complex::operator * (const Complex& ro) const
 ostream& operator << (ostream &out, const Complex &c)
 {
 	out << c.real;
-	if (c.imag > 0)
+	if (c.imag >= 0)
 		cout << "+";
 	out << c.imag << "i";
 	return out;
@@ -62,9 +64,50 @@ ostream& operator << (ostream &out, const Complex &c)
 
 istream& operator >> (istream &in, Complex &c)
 {
-	// cout << c.real << " + " << c.imag << "i" << endl;
-	in >> c.real;
-	in >> c.imag;
+	string str;
+	stringstream ss;
+	in >> str;
+	ss.str(str);
+	std::regex rgx("([-]?\\d+[.]?(\\d+)?[+|-]\\d+[.]?(\\d+)?[i])");
+	std::regex rgxNumi("^[-]?\\d+[.]?(\\d+)?[i]");
+	std::regex rgxni("^[-][i]$"); 		
+	std::regex rgxi("^[i]$");
+	std::regex rgxn("^[-]?\\d+[.]?(\\d+)?$");
+	if ( std::regex_match(str.begin(), str.end(), rgx) )
+	{
+		ss >> c.real;
+		ss >> c.imag;
+	}
+	else if ( std::regex_match(str.begin(), str.end(), rgxNumi) )
+	{
+		ss >> c.imag;
+		c.real = 0;
+	}
+	else if ( std::regex_match(str.begin(), str.end(), rgxi) )
+	{
+		c.real = 0;
+		c.imag = 1;
+	}
+	else if ( std::regex_match(str.begin(), str.end(), rgxni) )
+	{
+		c.real = 0;
+		c.imag = -1;
+	}
+	else if ( std::regex_match(str.begin(), str.end(), rgxn) )
+	{
+		ss >> c.real;
+		c.imag = 0;
+	}
+
+	// if (str[str.size() - 1] == 'i')
+	// 	ss >> c.imag;
+	// else 
+	// {
+	// ss >> c.real;
+	// ss >> c.imag;
+	// }
+	// in >> c.real;
+	// in >> c.imag;
 	return in;
 }
 
@@ -74,3 +117,10 @@ void Complex::display()
 	cout << imag << endl;
 }
 
+void display(const Complex &c1, const Complex &c2)
+{
+	cout << c1 << " + " << c2 << " = " << c1 + c2 << endl;
+	cout << c1 << " - " << c2 << " = " << c1 - c2 << endl;
+	cout << c1 << " * " << c2 << " = " << c1 * c2 << endl;
+
+}

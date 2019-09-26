@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include <regex>
 using namespace std;
 class Complex
 {
@@ -20,3 +22,5 @@ class Complex
 };
 
 const Complex i(0,1);
+void display(const Complex &c1, const Complex &c2);
+
