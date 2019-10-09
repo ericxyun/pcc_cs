@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-	bool test_bool;
-	Complex usr_input;
+	bool test_bool;			///< result to hold boolean
+	Complex usr_input;		///< user input
 
 	cout << "\nTesting default constructor\n";
 	cout << Complex() << endl;
