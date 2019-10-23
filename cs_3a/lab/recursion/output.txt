@@ -1,0 +1,92 @@
+Select a function to test(1-6): \n
+Enter a positive integer: \n
+\n
+The sum is 120\n
+
+Select a function to test(1-6): \n
+Finding the minimum element of an array containing random numbers from -1000 to 1000.\n
+Enter the size of the array: \n
+\n
+The minimum element of the array is -973\n
+
+Select a function to test(1-6): \n
+Finding the minimum element of an array containing random numbers from -1000 to 1000.\n
+Enter the size of the array: \n
+\n
+The minimum element of the array is -959\n
+
+Select a function to test(1-6): \n
+Enter a phrase: \n
+The phrase is a palindrome.\n
+
+Select a function to test(1-6): \n
+Enter a phrase: \n
+The phrase is a palindrome.\n
+
+Select a function to test(1-6): \n
+Enter a phrase: \n
+The phrase is a palindrome.\n
+
+Select a function to test(1-6): \n
+Enter a phrase: \n
+The phrase is not a palindrome\n
+
+Select a function to test(1-6): \n
+Enter a string: \n
+7 substrings\n
+r, ru, rum, u, um, m, ∅\n
+
+Select a function to test(1-6): \n
+Enter a string: \n
+46 substrings\n
+c, co, com, comp, compu, comput, compute, computer, computers, o, om, omp, ompu, omput, ompute, omputer, omputers, m, mp, mpu, mput, mpute, mputer, mputers, p, pu, put, pute, puter, puters, u, ut, ute, uter, uters, t, te, ter, ters, e, er, ers, r, rs, s, ∅\n
+
+Select a function to test(1-6): \n
+Enter a string: \n
+11 substrings\n
+C, CS, CS3, CS3A, S, S3, S3A, 3, 3A, A, ∅\n
+
+Select a function to test(1-6): \n
+Enter a positive number: \n
+*****\n
+****\n
+***\n
+**\n
+*\n
+*\n
+**\n
+***\n
+****\n
+*****\n
+
+Select a function to test(1-6): \n
+Enter a positive number: \n
+****\n
+***\n
+**\n
+*\n
+*\n
+**\n
+***\n
+****\n
+
+Select a function to test(1-6): \n
+Enter a positive number: \n
+***\n
+**\n
+*\n
+*\n
+**\n
+***\n
+
+Select a function to test(1-6): \n
+Finding the sum of the elements of an array containing random numbersfrom -1000 to 1000.\n
+Enter the size of the array: \n
+\n
+The sum of the elements of the array is -2523\n
+
+Select a function to test(1-6): \n
+Finding the sum of the elements of an array containing random numbersfrom -1000 to 1000.\n
+Enter the size of the array: \n
+\n
+The sum of the elements of the array is -1588\n

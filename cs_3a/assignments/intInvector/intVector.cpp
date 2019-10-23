@@ -1,3 +1,8 @@
+#include "intVector.h"
+
+/**
+* initializes intVector object to 0
+*/
 IntVector::IntVector()
 {
 	sz = 0;
@@ -5,6 +10,10 @@ IntVector::IntVector()
 	data = new int[sz];
 }
 
+/**
+* initalizes intVector object size and value to
+*	parameter value and assigns 0 to all elements		
+*/
 IntVector::IntVector( unsigned size)
 {
 	sz = size;	
@@ -14,6 +23,11 @@ IntVector::IntVector( unsigned size)
 		data[i] = 0;
 }
 
+/**
+* initalizes intVector object size and value to
+*	parameter value and assigns the value parameter 
+*	to all elements		
+*/
 IntVector::IntVector( unsigned size, int value )
 {
 	sz = size;
@@ -23,20 +37,33 @@ IntVector::IntVector( unsigned size, int value )
 		data[i] = value;
 }
 
+/**
+ * destroys the inVector object
+ */
 IntVector::~IntVector()
 {
 	delete [] data;
 }
 
+/**
+* returns the size value of the intVector object
+*/
 unsigned IntVector::size() const
 {
 	return sz;
 }
+
+/**
+ * returns the capacity value of the intVector object
+ */
 unsigned IntVector::capacity() const
 {
 	return cap;
 }
 
+/**
+* checks to see if a vector is empty
+*/
 bool IntVector::empty() const
 {
 	if ( sz == 0 )
@@ -44,6 +71,11 @@ bool IntVector::empty() const
 	return false;
 }
 
+/**
+* returns the value of the vector at the defined position
+*
+* @param index: position of vector
+*/
 const int & IntVector::at( unsigned index ) const
 {
 	if ( index >= sz )
@@ -51,6 +83,11 @@ const int & IntVector::at( unsigned index ) const
 	return data[index];
 }
 
+/**
+* returns the value of the vector at the defined position
+*
+* @param index: position of vector
+*/
 int & IntVector::at( unsigned index )
 {
 	if ( index >= sz )
@@ -58,21 +95,33 @@ int & IntVector::at( unsigned index )
 	return data[index];
 }
 
+/**
+* returns the first element
+*/
 const int & IntVector::front() const
 {
 	return data[0];
 }
 
+/**
+* returns the first element
+*/
 int & IntVector::front()
 {
 	return data[0];
 }
 
+/**
+* returns the last element
+*/
 const int & IntVector::back() const
 {
 	return data[sz - 1];
 }
 
+/**
+* returns the last element
+*/
 int & IntVector::back()
 {
 	return data[sz - 1];
@@ -103,6 +152,11 @@ void IntVector::insert( unsigned index, int value )
 	 data[index] = value;
 }
 
+/**
+* removes the element at a given position
+*
+* @param index: position in vector
+*/
 void IntVector::erase ( unsigned index )
 {
 	if ( (index > sz) || (index < 0) )
@@ -137,6 +191,9 @@ void IntVector::push_back( int value )
 	data[sz - 1] = value;
 }
 
+/**
+ * removes the last element of the vector
+ */
 void IntVector::pop_back()
 {
 	if (sz == 0)	
@@ -161,7 +218,6 @@ void IntVector::clear()
  */
 void IntVector::resize( unsigned size )
 {
-	display();
 	int tmp_sz = sz;
 	sz = size;
 	if (sz > cap)
@@ -174,7 +230,6 @@ void IntVector::resize( unsigned size )
 		for (int i = tmp_sz; i < sz; i++)
 			data[i] = 0;
 	}
-	display();
 }
 
 // TODO utilize expand with param values
@@ -186,7 +241,6 @@ void IntVector::resize( unsigned size )
  */
 void IntVector::resize( unsigned size, int value )
 {
-	display();
 	int tmp_sz = sz;
 	sz = size;
 	if (sz > cap)
@@ -196,10 +250,9 @@ void IntVector::resize( unsigned size, int value )
 		else
 			expand();
 
-		for (int i = tmp_sz; i < sz; i++)
-			data[i] = value;
 	}
-	display();
+	for (int i = tmp_sz; i < sz; i++)
+		data[i] = value;
 	// if (size < sz) 
 	// 	sz = size;
 	// else if (size > sz)
@@ -216,18 +269,38 @@ void IntVector::resize( unsigned size, int value )
 	// }
 }
 
+/**
+* drops all contents of a vector and resizes to n and fills
+* 	in value the value parameter
+*
+* 	@param n: size 
+* 	@param value: value to assign element
+*/
 void IntVector::assign( unsigned n , int value )
 {
-	display();
 	resize(n);
 	for (int i = 0; i < sz; i++)
 		data[i] = value;
-	display();
 }
 
+/**
+ * minimum capacity to set, else increase capacity
+ *
+ * @param n: capacity to set
+ */
 void IntVector::reserve( unsigned n)
 {
-
+	if (n > cap)
+	{
+		if (cap * 2 < cap + n - cap)
+		{
+			expand(cap + n - cap);
+		}
+		else
+			expand();
+			// expand();
+	}
+	
 }
 
 void IntVector::display()
@@ -241,6 +314,9 @@ void IntVector::display()
 }
 
 /// PRIVATE
+/**
+ *	doubles the capacity of the intVector object
+ */
 void IntVector::expand()
 {
 	int *tmp;
@@ -252,6 +328,10 @@ void IntVector::expand()
 	data = tmp;
 }
 
+/**
+* increases the capacity of the intVector object
+* 	by the value of n
+*/
 void IntVector::expand( unsigned n )
 {
 	int *tmp;

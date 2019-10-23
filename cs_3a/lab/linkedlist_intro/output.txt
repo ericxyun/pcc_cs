@@ -1,0 +1,15 @@
+Testing display function on empty List
+
+Testing display function on one item List
+100
+
+Testing display function on two item List
+200 100
+
+Testing push_front function (by calling it 10 times)
+Testing display function on list with several items
+9 8 7 6 5 4 3 2 1 0 200 100
+
+Testing the pop_front function
+Testing display function after calling pop_front 5 times
+4 3 2 1 0 200 100

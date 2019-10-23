@@ -1,0 +1,24 @@
+John Smith
+20
+Math
+3.5
+
+Anna White
+19
+English
+3.2
+
+Paul Johnson
+18
+Physics
+3.7
+
+Eric Yun
+29
+Computer Science
+4.4
+
+Mandy Cheung
+22
+Computer Science
+4.0

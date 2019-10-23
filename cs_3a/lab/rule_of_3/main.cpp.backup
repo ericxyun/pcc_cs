@@ -1,0 +1,26 @@
+#include <iostream>
+#include "music_collection.h"
+#include "music_collection.cpp"
+using namespace std;
+
+int main()
+{
+	Tune a("Song A");
+	Tune b("Song B");
+	Tune c("Song C");
+	Tune d("Song D");
+	Tune e("Song E");
+	Tune f("Song F");
+	Tune g("Song G");
+	Tune h("Song H");
+	Tune i("Song I");
+	MusicCollection A(6);
+	A.add_tune(a);
+	A.add_tune(b);
+	A.add_tune(c);
+	A.add_tune(d);
+	A.add_tune(e);
+	A.set_tune(2, i);
+	cout << A;
+ }
+

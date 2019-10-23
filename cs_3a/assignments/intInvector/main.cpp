@@ -1,6 +1,6 @@
 #include <iostream>
 #include "intVector.h"
-#include "intVector.cpp"
+// #include "intVector.cpp"
 
 using namespace std;
 
@@ -94,58 +94,58 @@ int main()
     }
     cout << endl;
     
-    // cout << "\nTesting resize() function (two parameter)\n";
-    // v.resize(20, 101);
-    // cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
-    //     for (unsigned i = 0; i < v.size(); i++){
-    //     cout << v.at(i) << " ";
-    // }
-    // cout << endl;
-    // v.resize(10, 101);
-    // cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
-    //     for (unsigned i = 0; i < v.size(); i++){
-    //     cout << v.at(i) << " ";
-    // }
-    // cout << endl;
-    // 
-    // cout << "\nTesting assign() function\n";
-    // v.assign(5, 102);
-    //     cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
-    //     for (unsigned i = 0; i < v.size(); i++){
-    //     cout << v.at(i) << " ";
-    // }
-    // cout << endl;
-    // 
-    // cout << "\nTesting reserve() function\n";
-    // cout << "where n is smaller than capacity\n";
-    // v.reserve(6);
-    // cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
-    // for (int i = 0; i < v.size(); i++){
-    //     cout << v.at(i) << " ";
-    // }
-    // cout << endl;
-    // 
-    // 
-    // cout << "\nTesting reserve() function\n";
-    // cout << "where n is larger than capacity\n";
-    // v.reserve(70);
-    // cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
-    // for (int i = 0; i < v.size(); i++){
-    //     cout << v.at(i) << " ";
-    // }
-    // cout << endl;
-    // 
-    // cout << "\nTesting reserve() function\n";
-    // cout << "where n is larger than capacity\n";
-    // v.reserve(90);
-    // cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
-    // for (int i = 0; i < v.size(); i++){
-    //     cout << v.at(i) << " ";
-    // }
-    // cout << endl;
-    // 
-    // cout << endl;
-    // cout << "Testing clear() function\n";
-    // v.clear();
-    // cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+    cout << "\nTesting resize() function (two parameter)\n";
+    v.resize(20, 101);
+    cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+        for (unsigned i = 0; i < v.size(); i++){
+        cout << v.at(i) << " ";
+    }
+    cout << endl;
+    v.resize(10, 101);
+    cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+        for (unsigned i = 0; i < v.size(); i++){
+        cout << v.at(i) << " ";
+    }
+    cout << endl;
+    
+    cout << "\nTesting assign() function\n";
+    v.assign(5, 102);
+        cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+        for (unsigned i = 0; i < v.size(); i++){
+        cout << v.at(i) << " ";
+    }
+    cout << endl;
+    
+    cout << "\nTesting reserve() function\n";
+    cout << "where n is smaller than capacity\n";
+    v.reserve(6);
+    cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+    for (int i = 0; i < v.size(); i++){
+        cout << v.at(i) << " ";
+    }
+    cout << endl;
+    
+    
+    cout << "\nTesting reserve() function\n";
+    cout << "where n is larger than capacity\n";
+    v.reserve(70);
+    cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+    for (int i = 0; i < v.size(); i++){
+        cout << v.at(i) << " ";
+    }
+    cout << endl;
+    
+    cout << "\nTesting reserve() function\n";
+    cout << "where n is larger than capacity\n";
+    v.reserve(90);
+    cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
+    for (int i = 0; i < v.size(); i++){
+        cout << v.at(i) << " ";
+    }
+    cout << endl;
+    
+    cout << endl;
+    cout << "Testing clear() function\n";
+    v.clear();
+    cout << "size: " << v.size() << "\tcapacity: " << v.capacity() << endl;
 }
