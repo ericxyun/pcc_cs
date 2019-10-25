@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 int sum(int n)
@@ -17,6 +18,7 @@ int sum(int n)
 int findmin(const int a[], int n)
 {
 	int min;
+	int small;
 	// base case: n = 2
 	if (n == 2)
 	{
@@ -30,10 +32,11 @@ int findmin(const int a[], int n)
 	else 
 	{
 		// if (a[n-1] < findmin(a, n-1))
-		if (a[n-1] < a[n])
+		small = findmin(a, n-1);
+		if (a[n-1] < small)
 			return a[n-1];
 		else 
-			return findmin(a, n-1);
+			return small;
 	}
 }
 
@@ -83,12 +86,34 @@ bool ispalindrome(const char a[], int n)
 vector<string> generate_substrings(string s)
 {
 	vector<string> sVec;
+	string x = "";
 	int len = s.length();
+	int count = 0;
+
 	for (int i = 0; i < len; i++)
 	{
-		cout << s[i];
-		while (i < len)
-			cout << s[i+1] << endl;	
+		x += s[i];
+		sVec.push_back(x);
+		count++;
+		for (int j = i+1; j < len; j++)
+		{
+			x += s[j];
+			sVec.push_back(x);
+			count++;
+		}
+		x = "";
+	}
+
+	cout << count + 1 << " substrings" <<  endl;
+	for (int k = 0; k < sVec.size(); k++)
+	{
+		if (k < sVec.size() - 1)
+			cout << sVec[k] << ", ";
+		else
+		{
+			cout << sVec[k] << ", ";
+			cout << "∅" << endl;
+		}
 	}
 	return sVec;
 }
@@ -98,9 +123,28 @@ vector<string> generate_substrings(string s)
  *
  * @param n
  */
-void drawPattern(int n)
+void drawPattern(int n, bool pass, int pos_num)
 {
-
+	if ((pass == true) && (n == pos_num))
+	{
+		cout << string(n, '*') << endl;
+	}
+	else if ((pass == true) && (n < 5))
+	{
+		cout << string(n, '*') << endl;
+		return drawPattern(n + 1, pass, pos_num);
+	}
+	else if ((pass == false) && (n == 1))
+	{
+		cout << string(n, '*') << endl;
+		pass = true;
+		return drawPattern(n, true, pos_num);
+	}
+	else
+	{
+		cout << string(n, '*') << endl;
+		return drawPattern(n-1, pass, pos_num);
+	}
 }
 int main()
 {
@@ -113,6 +157,7 @@ int main()
 	{
 		int n;
 		cout << "Enter a positive integer: ";
+		cout << endl;
 		cin >> n;
 		cout << endl;
 		cout << "The sum is " << sum(n) << endl;
@@ -126,12 +171,12 @@ int main()
 		cout << "Finding the minimum element of an array containing random numbers from -1000 to 1000.\n";
 		cout << "Enter the size of the array: " << endl;
 		cin >> size;
-		cout << endl;
 		a = new int [size];
 		for (int i = 0; i < size; i++)
 		{
 			a[i] = rand()%(1000 - -1000 + 1) + -1000;
 		}
+		cout << endl;
 		cout << "The minimum element of the array is ";
 		cout << findmin(a, size) << endl;
 
@@ -141,14 +186,16 @@ int main()
 	{
 		int size;
 		int *a;
-		cout << "Finding the sum of the elements of an array containing random numbers from -1000 to 1000.\n" << endl;
+		cout << "Finding the sum of the elements of an array containing random numbersfrom -1000 to 1000.\n";
 		cout << "Enter the size of the array: ";
 		cin >> size;
+		cout << endl;
 		a = new int [size];
 		for (int i = 0; i < size; i++)
 		{
 			a[i] = rand()%(1000 - -1000 + 1) + -1000;
 		}
+		cout << endl;
 		cout << "The sum of the elements of the array is "; 
 		cout << findsum(a, size) << endl;
 	}
@@ -167,16 +214,27 @@ int main()
 		if (ispalindrome(p, size))
 			cout << "The phrase is a palindrome." << endl;
 		else
-			cout << "The phrase is not a palindrome." << endl;
+			cout << "The phrase is not a palindrome" << endl;
 	}
 
 	else if (selection == 5)
 	{
-				
+		string str;
+		int num_substr;
+
+		cout << "Enter a string: " << endl;
+		cin >> str;
+
+		generate_substrings(str);
 	}
 
 	else if (selection == 6)
 	{
+		int pos_num;
+		cout << "Enter a positive number: " << endl;
+		cin >> pos_num;
+		bool pass = false;
+		drawPattern(pos_num, pass, pos_num);
 
 	}
 }
