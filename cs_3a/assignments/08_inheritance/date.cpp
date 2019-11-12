@@ -45,7 +45,7 @@ string Date::name(unsigned m) const
 }
 unsigned Date::number(const string &mn) const
 {
-	for (unsigned i = 0; i < 12; i++)
+	for (int i = 0; i < 12; i++)
 		if (month(i) == mn)
 			return i+1;
 	return 0;
