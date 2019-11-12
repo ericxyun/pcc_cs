@@ -1,0 +1,64 @@
+---Test 1: Student class---
+>>Calling default constructor, then all mutators,
+printing output after each call. Also shows when
+destructor is called.
+
+Name 0 000-000-0000 0 X classStanding 0
+Katy Perry 0 000-000-0000 0 X classStanding 0
+Katy Perry 999899 000-000-0000 0 X classStanding 0
+Katy Perry 999899 949-555-1234 0 X classStanding 0
+Katy Perry 999899 949-555-1234 30 X classStanding 0
+Katy Perry 999899 949-555-1234 30 F classStanding 0
+Katy Perry 999899 949-555-1234 30 F Freshman 0
+Katy Perry 999899 949-555-1234 30 F Freshman 4
+Called Student destructor
+---End of Student class test---
+
+---Test 2: CS133Student class---
+>>Calling default constructor, then all mutators,
+printing output after each call. Also shows when
+destructor is called.
+
+Name 0 000-000-0000 0 X classStanding 0 0 no 1/1/2000
+Jim Cramer 0 000-000-0000 0 X classStanding 0 0 no 1/1/2000
+Jim Cramer 668899 000-000-0000 0 X classStanding 0 0 no 1/1/2000
+Jim Cramer 668899 949-665-1234 0 X classStanding 0 0 no 1/1/2000
+Jim Cramer 668899 949-665-1234 63 X classStanding 0 0 no 1/1/2000
+Jim Cramer 668899 949-665-1234 63 M classStanding 0 0 no 1/1/2000
+Jim Cramer 668899 949-665-1234 63 M Freshman 0 0 no 1/1/2000
+Jim Cramer 668899 949-665-1234 63 M Freshman 3.3 0 no 1/1/2000
+Jim Cramer 668899 949-665-1234 63 M Freshman 3.3 500 no 1/1/2000
+Jim Cramer 668899 949-665-1234 63 M Freshman 3.3 500 yes 1/1/2000
+Jim Cramer 668899 949-665-1234 63 M Freshman 3.3 500 yes 5/12/2016
+Called CS133Student destructor
+Called Student destructor
+---End of CS133Student class test---
+
+---Final output---
+>>Creating an array of 7 objects - 4 Students and 3 CS133Students.
+
+>>Calling printAll() function, passing in each element
+of the student array.
+
+Katy Perry 999899 949-555-1234 30 F Freshman 4
+Tom Brady 456789 714-555-5555 37 M Sophomore 3.23
+Russell Wilson 876542 760-703-1234 26 M Sophomore 3.8
+Norm Drapple 777744 213-555-6789 18 M Freshman 1.1
+Jim Cramer 668899 949-665-1234 63 M Freshman 3.3 500 yes 5/12/2016
+Clayton Kershaw 156789 248-555-6543 29 M Sophomore 2.5 700 no 5/11/2015
+Jim Rome 876545 703-703-7654 40 M Sophomore 3.2 800 yes 5/11/2015
+
+>>Deleting all students.
+
+Called Student destructor
+Called Student destructor
+Called Student destructor
+Called Student destructor
+Called CS133Student destructor
+Called Student destructor
+Called CS133Student destructor
+Called Student destructor
+Called CS133Student destructor
+Called Student destructor
+
+---End of final output---
