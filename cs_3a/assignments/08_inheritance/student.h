@@ -11,5 +11,7 @@ class Student
 		string standing;
 		int gpa;
 	public:
+		Student();
+		Student();
 		print();
 };
