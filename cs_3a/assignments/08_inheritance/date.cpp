@@ -31,7 +31,8 @@ string Date::name(unsigned m) const
 		"September",
 		"October",
 		"November",
-		"December"}
+		"December"};
+
 	return months[m];
 }
 unsigned Date::number(const string &mn) const
