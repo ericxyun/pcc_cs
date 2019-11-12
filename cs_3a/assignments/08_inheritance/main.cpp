@@ -4,5 +4,5 @@
 using namespace std;
 int main()
 {
-	Date d;
+	Date d("January", 3, 2000);
 }
