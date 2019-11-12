@@ -19,7 +19,11 @@ Date::Date(unsigned m, unsigned d, unsigned y)
 }
 Date::Date(const string &mn, unsigned d, unsigned y)
 {
-
+	day = d;
+	month = number(mn);
+	cout << month;
+	monthName = mn;
+	year = y;
 }
 bool Date::isLeap(unsigned) const
 {}
