@@ -5,7 +5,7 @@ class Date
 	private:
 		unsigned day;
 		unsigned month;
-		unsigned monthName;
+		string monthName;
 		unsigned year;
 		bool isLeap(unsigned) const;
 		unsigned daysPerMonth(unsigned m, unsigned y) const;
