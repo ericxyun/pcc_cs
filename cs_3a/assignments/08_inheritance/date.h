@@ -19,5 +19,5 @@ class Date
 		Date(const string &mn, unsigned d, unsigned y);
 		void printNumeric() const;
 		void printAlpha() const;
-}
+};
 
