@@ -18,3 +18,4 @@ class Date
 		void printNumeric() const;
 		void printAlpha() const;
 }
+
