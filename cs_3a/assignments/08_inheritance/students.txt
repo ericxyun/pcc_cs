@@ -1,0 +1,4 @@
+Katy Perry	999899	949-555-1234	30	F	Freshman	4
+Tom Brady	456789	714-555-5555	37	M	Sophomore	3.23
+Russell Wilson	876542	760-703-1234	26	M	Sophomore	3.8
+Norm Drapple	777744	213-555-6789	18	m	Freshman	1.1
