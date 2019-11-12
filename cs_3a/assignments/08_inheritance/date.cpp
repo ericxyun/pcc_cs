@@ -58,6 +58,8 @@ unsigned Date::number(const string &mn) const
  * PUBLIC FUNCTIONS
  */
 void Date::printNumeric() const
-{}
+{
+
+}
 void Date::printAlpha() const
 {}
