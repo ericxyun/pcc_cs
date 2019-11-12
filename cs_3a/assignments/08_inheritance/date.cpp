@@ -7,6 +7,7 @@ Date::Date()
 	day = 1;
 	month = 1;
 	cout << name(1) << endl;
+	year = 2000;
 
 }
 Date::Date(unsigned m, unsigned d, unsigned y)
