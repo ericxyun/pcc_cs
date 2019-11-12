@@ -1,8 +1,8 @@
 #include <iostream>
-#include "date.h"
+#include "date.cpp"
 
 using namespace std;
 int main()
 {
-
+	Date d;
 }
