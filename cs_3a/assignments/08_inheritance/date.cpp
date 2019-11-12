@@ -6,7 +6,7 @@ Date::Date()
 {
 	day = 1;
 	month = 1;
-	cout << name[1] << endl;
+	cout << name(1) << endl;
 
 }
 Date::Date(unsigned m, unsigned d, unsigned y)
@@ -32,7 +32,7 @@ string Date::name(unsigned m) const
 		"October",
 		"November",
 		"December"}
-	return months[m]
+	return months[m];
 }
 unsigned Date::number(const string &mn) const
 {}
