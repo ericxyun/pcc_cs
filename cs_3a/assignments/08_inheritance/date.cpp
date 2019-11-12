@@ -8,7 +8,6 @@ Date::Date()
 	month = 1;
 	monthName = name(month);
 	year = 2000;
-
 }
 Date::Date(unsigned m, unsigned d, unsigned y)
 {
