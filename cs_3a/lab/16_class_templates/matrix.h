@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+const int MAXROWS = 2;
+const int MAXCOLS = 3;
+
 template <class T>
 class Matrix
 {
