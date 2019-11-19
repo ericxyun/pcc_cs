@@ -65,7 +65,7 @@ class Matrix
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					m[i][j] += array[i][j];
+					m.array[i][j] += array[i][j];
 				}
 			}
 			return m;
