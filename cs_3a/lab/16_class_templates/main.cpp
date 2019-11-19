@@ -1,6 +1,6 @@
 #include <iostream>
 #include "matrix.h"
-using namspace std;
+using namespace std;
 
 int main()
 {
