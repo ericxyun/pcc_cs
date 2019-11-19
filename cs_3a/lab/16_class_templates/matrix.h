@@ -70,4 +70,5 @@ class Matrix
 				}
 			}
 		}
+		return this;
 };
