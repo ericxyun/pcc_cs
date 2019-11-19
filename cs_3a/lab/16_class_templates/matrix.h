@@ -15,7 +15,7 @@ class Matrix
 	public:
 		Matrix();
 		void printMatrix() const;
-		friend ostream& operator<<(std::ostream& out, const Matrix m);
+		friend ostream& operator<<(std::ostream& out, const Matrix m)
 		{
 			for (int i = 0; i < MAXROWS; i++)	
 			{
