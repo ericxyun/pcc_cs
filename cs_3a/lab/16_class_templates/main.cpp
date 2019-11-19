@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
 	Matrix<int> m;
+	Matrix<int> n;
 	cout << m;
 }
 
