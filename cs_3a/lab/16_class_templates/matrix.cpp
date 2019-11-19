@@ -33,7 +33,7 @@ ostream& operator<<(std::ostream& out, const Matrix<T> m)
 	{
 		for (int j = 0; j < MAXCOLS; j++)
 		{
-			out << m[i][j];
+			out << m.array[i][j];
 		}
 		out << endl;
 	}
