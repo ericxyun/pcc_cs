@@ -2,15 +2,13 @@
 #include "matrix.h"
 using namespace std;
 
+const int MAXROWS = 2;
+const int MAXCOLS = 3;
 int main()
 {
-	Matrix<int> n;
-	n.setElement(1, 2, 3);
+	cout << "Demonstrating with string matrix:\n";
 
-	Matrix<int> m;
-	int array[2][3] = {{1, 2, 3},
-						{4, 5, 6}};
-	m.setMatrix(array);
-	cout << m;
+	cout << "Matrix set to first array\n";
+	firstArray[][]
 }
 
