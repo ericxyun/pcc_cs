@@ -5,6 +5,6 @@ using namespace std;
 int main()
 {
 	Matrix<int> m;
-	m.printMatrix();
+	cout << m;
 }
 
