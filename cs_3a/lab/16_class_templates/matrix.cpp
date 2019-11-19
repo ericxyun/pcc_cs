@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-template <class T>
+// template <class T>
 Matrix<T>::Matrix()
 {
 	for (int i = 0; i < MAXROWS; i++)	
@@ -10,7 +10,8 @@ Matrix<T>::Matrix()
 			array[i][j] = 0;
 			cout << array[i][j];
 		}
-		cout << endl;
 	}
 }
+
+Matrix<T>
 
