@@ -5,8 +5,6 @@ using namespace std;
 
 int main()
 {
-	int totalElem = MAXROWS + MAXCOLS + 1;
-	cout << totalElem;
 	cout << "Demonstrating with string matrix:\n\n";
 
 	cout << "Matrix set to first array\n";
@@ -22,8 +20,8 @@ int main()
 	cout << m1 + m2;
 
 	cout << "Demonstrating with int matrix\n\n";
-	int intArr1[totalElem] = {1, 2, 3, 4, 5, 6};
-	int intArr2[totalElem] = {7, 7, 7, 7, 7, 7};
+	int intArr1[MAXROWS + MAXCOLS + 1] = {1, 2, 3, 4, 5, 6};
+	int intArr2[MAXROWS + MAXCOLS + 1] = {7, 7, 7, 7, 7, 7};
 
 
 
