@@ -3,7 +3,7 @@ using namespace std;
 const int MAXROWS = 2;
 const int MAXCOLS = 3;
 
-template <typename T>
+template <class T>
 class Matrix
 {
 
@@ -14,7 +14,7 @@ class Matrix
 
 	public:
 		Matrix();
-		void prTMatrix() const;
+		void TMatrix() const;
 		ostream& operator<<(std::ostream& out, const Matrix m);
 		void setElement(T row, T col, T value);
 		void setMatrix(const T[]);
