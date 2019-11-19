@@ -27,7 +27,7 @@ void Matrix<T>::printMatrix() const
 }
 
 template <class T>
-ostream& operator<<(std::ostream& out, const Matrix<T> m)
+ostream& operator<<(ostream& out, const Matrix<T> m)
 {
 	for (int i = 0; i < MAXROWS; i++)	
 	{
