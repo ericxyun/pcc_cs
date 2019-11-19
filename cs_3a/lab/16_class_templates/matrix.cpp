@@ -26,3 +26,8 @@ void Matrix<T>::printMatrix() const
 	}
 }
 
+template <class T>
+friend ostream& operator<<(std::ostream& out, const Matrix m)
+{
+}
+
