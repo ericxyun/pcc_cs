@@ -69,7 +69,13 @@ class Matrix
 		}
 		void setMatrix(const T m [MAXROWS][MAXCOLS])
 		{
-
+			for (int i = 0; i < MAXROWS; i++)
+			{
+				for (int j = 0; j < MAXCOLS; j++)
+				{
+					array[i][j] = m[i][j];
+				}
+			}
 		}
 
 		Matrix operator+(const Matrix &m)
