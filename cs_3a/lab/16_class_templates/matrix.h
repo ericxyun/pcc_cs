@@ -67,7 +67,7 @@ class Matrix
 				}
 			}
 		}
-		void setMatrix(const T m)
+		void setMatrix(const T m [MAXROWS][MAXCOLS])
 		{
 			for (int i = 0; i < MAXROWS; i++)
 			{
