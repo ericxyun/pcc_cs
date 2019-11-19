@@ -61,9 +61,9 @@ class Matrix
 		}
 		Matrix operator+(const Matrix &m)
 		{
-			for (int i = 0; i < MAXROWS; i++)
+			for (int i = 0; i < MAXCOLS; i++)
 			{
-				for (int j = 0; j < MAXCOLS; j++)
+				for (int j = 0; j < MAXROWS; j++)
 				{
 					array[i][j] += m.array[i][j];
 				}
