@@ -29,5 +29,14 @@ void Matrix<T>::printMatrix() const
 template <class T>
 ostream& operator<<(std::ostream& out, const Matrix<T> m)
 {
+	for (int i = 0; i < MAXROWS; i++)	
+	{
+		for (int j = 0; j < MAXCOLS; j++)
+		{
+			output << array[i][j];
+		}
+		cout << endl;
+	}
+	return out;
 }
 
