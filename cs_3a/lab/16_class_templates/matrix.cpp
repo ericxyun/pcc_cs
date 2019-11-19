@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-// template <class T>
+template <class T>
 Matrix<T>::Matrix()
 {
 	for (int i = 0; i < MAXROWS; i++)	
@@ -13,5 +13,5 @@ Matrix<T>::Matrix()
 	}
 }
 
-Matrix<T>
+void Matrix::printMatrix() const;
 
