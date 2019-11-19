@@ -8,6 +8,6 @@ int main()
 	Matrix<int> n;
 	m.setElement(1, 2, 2);
 	n.setElement(1, 2, 3);
-	cout << m + n;
+	m + n;
 }
 
