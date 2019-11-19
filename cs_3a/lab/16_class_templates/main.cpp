@@ -37,13 +37,13 @@ int main()
 	float floatArr2[MAXROWS + MAXCOLS + 1] = {6.1, 5.2, 4.3, 3.4, 2.5, 1.6};
 	cout << "Matrix set to first array\n";
 	Matrix<float> m5;
-	m3.setMatrix(floatArr1);
-	cout << m6;
+	m5.setMatrix(floatArr1);
+	cout << m5;
 	cout << endl;
 	cout << "Matrix incremented by second array\n";
-	Matrix<float> m4;
-	m4.setMatrix(floatArr2);
-	cout << m3 + m4;
+	Matrix<float> m6;
+	m6.setMatrix(floatArr2);
+	cout << m5 + m6;
 
 
 	
