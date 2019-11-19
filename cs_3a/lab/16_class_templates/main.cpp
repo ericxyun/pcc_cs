@@ -7,6 +7,6 @@ int main()
 	cout << "Demonstrating with string matrix:\n";
 
 	cout << "Matrix set to first array\n";
-	string firstArray[MAXROWS + MAXCOLS] = {"Congra", "y", "ar", "alm", "don", "La"};
+	string firstArray[MAXROWS + MAXCOLS + 1] = {"Congra", "y", "ar", "alm", "don", "La"};
 }
 
