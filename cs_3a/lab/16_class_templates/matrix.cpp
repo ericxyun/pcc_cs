@@ -13,7 +13,7 @@ Matrix<T>::Matrix()
 	}
 }
 
-void Matrix::printMatrix() const
+void Matrix<T>::printMatrix() const
 {
 }
 
