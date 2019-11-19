@@ -15,7 +15,7 @@ class Matrix
 	public:
 		Matrix();
 		void TMatrix() const;
-		ostream& operator<<(std::ostream& out, const Matrix m);
+		friend ostream& operator<<(std::ostream& out, const Matrix m);
 		void setElement(T row, T col, T value);
 		void setMatrix(const T[]);
 		void setMatrix(const T m[][]);
