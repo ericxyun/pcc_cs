@@ -65,9 +65,8 @@ class Matrix
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					m.array[i][j] += array[i][j];
+					array[i][j] += m.array[i][j];
 				}
-				cout << endl;
 			}
 			return m;
 		}
