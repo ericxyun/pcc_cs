@@ -61,12 +61,11 @@ class Matrix
 		}
 		Matrix operator+(const Matrix &m)
 		{
-			Matrix <int>newMatrix;
 			for (int i = 0; i < MAXROWS; i++)
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					newMatrix.array[i][j] += m.array[i][j];
+					array[i][j] += m.array[i][j];
 				}
 			}
 			return newMatrix;
