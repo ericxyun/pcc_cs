@@ -49,7 +49,7 @@ class Matrix
 		}
 		void setElement(T row, T col, T value)
 		{
-			
+			array[row][col] = value;	
 		}
 		void setMatrix(const T a[])
 		{
