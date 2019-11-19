@@ -20,7 +20,7 @@ class Matrix
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					array[i][j] = "a";
+					array[i][j] = 'a';
 				}
 			}
 		}
