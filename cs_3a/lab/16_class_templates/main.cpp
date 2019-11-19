@@ -26,6 +26,7 @@ int main()
 	Matrix<int> m3;
 	m3.setMatrix(intArr1);
 	cout << m3;
+	cout << endl;
 	cout << "Matrix incremented by second array\n";
 	Matrix<int> m4;
 	m4.setMatrix(intArr2);
