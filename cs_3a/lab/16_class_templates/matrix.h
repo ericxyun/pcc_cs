@@ -20,4 +20,4 @@ class Matrix
 		void setMatrix(const T[]);
 		void setMatrix(const T m[][]);
 		Matrix operator+(const Matrix &m);
-}
+};
