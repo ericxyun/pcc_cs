@@ -13,6 +13,7 @@ Matrix<T>::Matrix()
 	}
 }
 
+template <class T>
 void Matrix<T>::printMatrix() const
 {
 }
