@@ -10,5 +10,6 @@ int main()
 	cout << m;
 	n.setElement(1, 2, 3);
 	cout << n;
+	cout << m + n;
 }
 
