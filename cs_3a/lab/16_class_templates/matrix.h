@@ -23,6 +23,7 @@ class Matrix
 				}
 			}
 		}
+
 		void printMatrix() const
 		{
 
@@ -35,6 +36,7 @@ class Matrix
 				cout << endl;
 			}
 		}
+
 		friend ostream& operator<<(std::ostream& out, const Matrix m)
 		{
 			for (int i = 0; i < MAXROWS; i++)	
@@ -47,10 +49,12 @@ class Matrix
 			}
 			return out;
 		}
+
 		void setElement(T row, T col, T value)
 		{
 			array[row][col] = value;	
 		}
+
 		void setMatrix(const T a[])
 		{
 				
