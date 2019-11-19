@@ -16,7 +16,9 @@ int main()
 	cout << "Matrix incremented by second array\n\n";
 	string secondArray[MAXROWS + MAXCOLS + 1] = {"tulations", "ou", "e", "ost", "e", "b!"};
 	Matrix<string> m2;
+	m2.setMatrix(secondArray);
 	cout << m1 + m2;
+
 
 	
 }
