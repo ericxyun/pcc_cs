@@ -67,6 +67,7 @@ class Matrix
 				{
 					cout << m.array[i][j];
 				}
+				cout << endl;
 			}
 			return m;
 		}
