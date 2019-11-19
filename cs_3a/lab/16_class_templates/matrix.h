@@ -62,6 +62,8 @@ class Matrix
 
 		Matrix operator+(const Matrix &m)
 		{
+			Matrix<T> newMatrix;
+			newMatrix.array = array;
 			for (int i = 0; i < MAXROWS; i++)
 			{
 				for (int j = 0; j < MAXCOLS; j++)
