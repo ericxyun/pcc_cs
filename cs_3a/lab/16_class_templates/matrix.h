@@ -68,6 +68,6 @@ class Matrix
 					array[i][j] += m.array[i][j];
 				}
 			}
-			return this.array;
+			return array;
 		}
 };
