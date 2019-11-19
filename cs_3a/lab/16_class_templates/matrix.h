@@ -44,7 +44,7 @@ class Matrix
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					out << m.array[i][j];
+					out << m.array[i][j] << " " ;
 				}
 				out << endl;
 			}
