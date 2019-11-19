@@ -7,7 +7,6 @@ int main()
 	cout << "Demonstrating with string matrix:\n";
 
 	cout << "Matrix set to first array\n";
-	firstArray[][]
-		cout << MAXROWS:
+	cout << MAXROWS;
 }
 
