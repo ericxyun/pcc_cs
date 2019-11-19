@@ -57,7 +57,15 @@ class Matrix
 
 		void setMatrix(const T a[])
 		{
-				
+			int idx = 0;	
+			for (int i = 0; i < MAXROWS; i++)
+			{
+				for (int j = 0; j < MAXCOLS; j++)
+				{
+					a[idx] = array[i][j];
+					idx++;
+				}
+			}
 		}
 		void setMatrix(const T m [MAXROWS][MAXCOLS])
 		{
