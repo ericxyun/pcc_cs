@@ -1,9 +1,12 @@
-const int MAXROWS = 2;
-const int MAXCOLS = 3;
+#include <iostream>
+using namespace std;
 
 template <typename T>
 class Matrix
 {
+	const int MAXROWS = 2;
+	const int MAXCOLS = 3;
+
 	private:
 		T array[MAXROWS][MAXCOLS];
 		T rows;
