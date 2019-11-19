@@ -13,8 +13,28 @@ class Matrix
 		T cols;
 
 	public:
-		Matrix();
-		void printMatrix() const;
+		Matrix()
+		{
+			for (int i = 0; i < MAXROWS; i++)	
+			{
+				for (int j = 0; j < MAXCOLS; j++)
+				{
+					array[i][j] = 0;
+				}
+			}
+		}
+		void printMatrix() const
+		{
+
+			for (int i = 0; i < MAXROWS; i++)	
+			{
+				for (int j = 0; j < MAXCOLS; j++)
+				{
+					cout << array[i][j];
+				}
+				cout << endl;
+			}
+		}
 		friend ostream& operator<<(std::ostream& out, const Matrix m)
 		{
 			for (int i = 0; i < MAXROWS; i++)	
