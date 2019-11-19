@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 const int MAXROWS = 2;
@@ -21,7 +20,7 @@ class Matrix
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					array[i][j] = 0;
+					array[i][j] = "a";
 				}
 			}
 		}
