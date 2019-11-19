@@ -55,10 +55,11 @@ class Matrix
 		{
 				
 		}
-		void setMatrix(const T m[MAXROWS][MAXCOLS])
+		void setMatrix(const T m [MAXROWS][MAXCOLS])
 		{
 
 		}
+
 		Matrix operator+(const Matrix &m)
 		{
 			for (int i = 0; i < MAXROWS; i++)
