@@ -3,6 +3,10 @@
 template <class T>
 Matrix<T>::Matrix()
 {
-	cout << "hello" << endl;
+	for (int i = 0; i < MAXROWS; i++)	
+		for (int j = 0; j < MAXCOLS; j++)
+		{
+			array[i][j] = 0;
+		}
 }
 
