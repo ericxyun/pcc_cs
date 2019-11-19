@@ -33,9 +33,9 @@ ostream& operator<<(std::ostream& out, const Matrix<T> m)
 	{
 		for (int j = 0; j < MAXCOLS; j++)
 		{
-			out << m.array[i][j];
+			cout << m.array[i][j];
 		}
-		out << endl;
+		cout << endl;
 	}
 	return out;
 }
