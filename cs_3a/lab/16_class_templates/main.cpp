@@ -19,6 +19,11 @@ int main()
 	m2.setMatrix(secondArray);
 	cout << m1 + m2;
 
+	cout << "Demonstrating with int matrix\n\n";
+	int intArr1 = {1, 2, 3, 4, 5, 6};
+	int intArr2 = {7, 7, 7, 7, 7, 7};
+
+
 
 	
 }
