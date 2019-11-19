@@ -18,6 +18,6 @@ class Matrix
 		friend ostream& operator<<(std::ostream& out, const Matrix m);
 		void setElement(T row, T col, T value);
 		void setMatrix(const T[]);
-		void setMatrix(const T m[][]);
+		void setMatrix(const T m[MAXROWS][MAXCOLS]);
 		Matrix operator+(const Matrix &m);
 };
