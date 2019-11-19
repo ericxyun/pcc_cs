@@ -47,8 +47,27 @@ class Matrix
 			}
 			return out;
 		}
-		void setElement(T row, T col, T value);
-		void setMatrix(const T[]);
-		void setMatrix(const T m[MAXROWS][MAXCOLS]);
-		Matrix operator+(const Matrix &m);
+		void setElement(T row, T col, T value)
+		{
+			
+		}
+		void setMatrix(const T a[])
+		{
+				
+		}
+		void setMatrix(const T m[MAXROWS][MAXCOLS])
+		{
+
+		}
+		Matrix operator+(const Matrix &m)
+		{
+			for (int i = 0; i < MAXROWS; i++)
+			{
+				for (int j = 0; j < MAXCOLS; j++)
+				{
+					m[i][j] += array[i][j];
+				}
+			}
+		}
+		return m;
 };
