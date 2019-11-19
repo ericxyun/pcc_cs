@@ -11,6 +11,6 @@ int main()
 	int array[2][3] = {{1, 2, 3},
 						{4, 5, 6}};
 	m.setMatrix(array);
-	cout << m + n;
+	cout << m;
 }
 
