@@ -21,13 +21,14 @@ int main()
 
 	cout << "Demonstrating with int matrix\n\n";
 	int intArr1[MAXROWS + MAXCOLS + 1] = {1, 2, 3, 4, 5, 6};
-	int intArr2[MAXROWS + MAXCOLS + 1] = {7, 7, 7, 7, 7, 7};
+	int intArr2[MAXROWS + MAXCOLS + 1] = {6, 5, 4, 3, 2, 1};
+	cout << "Matrix set to first array\n";
 	Matrix<int> m3;
 	m3.setMatrix(intArr1);
 	cout << m3;
 	Matrix<int> m4;
 	m4.setMatrix(intArr2);
-	cout << m4;
+	cout << m3 + m4;
 
 
 
