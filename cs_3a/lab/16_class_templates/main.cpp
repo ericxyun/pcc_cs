@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-	Matrix<string> m;
+	Matrix<int> m;
 }
 
