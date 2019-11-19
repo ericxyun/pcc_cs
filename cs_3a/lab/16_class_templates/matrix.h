@@ -16,13 +16,13 @@ class Matrix
 	public:
 		Matrix()
 		{
-			for (int i = 0; i < MAXROWS; i++)	
-			{
-				for (int j = 0; j < MAXCOLS; j++)
-				{
-					array[i][j];
-				}
-			}
+//			for (int i = 0; i < MAXROWS; i++)	
+//			{
+//				for (int j = 0; j < MAXCOLS; j++)
+//				{
+//					array[i][j];
+//				}
+//			}
 		}
 
 		void printMatrix() const
