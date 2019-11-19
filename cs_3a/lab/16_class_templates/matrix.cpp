@@ -27,7 +27,7 @@ void Matrix<T>::printMatrix() const
 }
 
 template <class T>
-ostream& operator<<(std::ostream& out, const Matrix m)
+ostream& operator<<(std::ostream& out, const Matrix<T> m)
 {
 }
 
