@@ -8,8 +8,7 @@ int main()
 	Matrix<int> n;
 	m.setElement(1, 2, 2);
 	n.setElement(1, 2, 3);
-	int array[3][2];
-	m.setMatrix(array);
+	m.setMatrix(n.array);
 	cout << m + n;
 }
 
