@@ -62,7 +62,7 @@ class Matrix
 			{
 				for (int j = 0; j < MAXCOLS; j++)
 				{
-					a[idx] = array[i][j];
+					array[i][j] = a[idx];
 					idx++;
 				}
 			}
