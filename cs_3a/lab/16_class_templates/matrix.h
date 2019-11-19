@@ -71,6 +71,6 @@ class Matrix
 					this->array[i][j] += m.array[i][j];
 				}
 			}
-			return this;
+			return newMatrix;
 		}
 };
