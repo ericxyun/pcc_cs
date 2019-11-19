@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 	int totalElem = MAXROWS + MAXCOLS + 1;
+	cout << totalElem;
 	cout << "Demonstrating with string matrix:\n\n";
 
 	cout << "Matrix set to first array\n";
