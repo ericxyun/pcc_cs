@@ -8,6 +8,6 @@ int main()
 	cout << "Matrix set to first array\n";
 	string firstArray[MAXROWS + MAXCOLS + 1] = {"Congra", "y", "ar", "alm", "don", "La"};
 	Matrix<string>m1;
-	cout << m1.setMatrix(firstArray);
+	m1.setMatrix(firstArray);
 }
 
