@@ -68,7 +68,7 @@ public:
    */
    Matrix()
    {
-	   cout << "
+	   cout << "hello" << endl;
    }
 
    /**
