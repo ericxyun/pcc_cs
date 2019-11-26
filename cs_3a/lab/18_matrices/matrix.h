@@ -14,12 +14,7 @@ class MatrixMisMatchException: public invalid_argument
 {
 	public:
 		MatrixMisMatchException();
-		~MatrixIndexException();
 
-
-
-	protected:
-		string message;
 };
 
 class MatrixIndexException: public out_of_range
