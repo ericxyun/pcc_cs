@@ -18,6 +18,8 @@ class MatrixMisMatchException: public invalid_argument
 };
 MatrixMisMatchException::get_message()
 {
+	string x = "hello";
+	return x;
 }
 
 
