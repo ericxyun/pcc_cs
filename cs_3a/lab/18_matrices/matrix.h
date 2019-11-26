@@ -83,7 +83,7 @@ public:
    */
    double& operator()(int i, int j)
    {
-	   return i * COLUMNS + j;
+	   return static_cast<double>(i * COLUMNS + j);
    }
 
    /**
