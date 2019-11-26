@@ -22,7 +22,7 @@ class MatrixMisMatchException: public invalid_argument
 		{
 			return get_message.c_str();
 		}
-		char *get_message(const char*message);
+		const char *get_message(const char*message);
 	protected:
 		string message;
 
