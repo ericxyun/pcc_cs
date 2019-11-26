@@ -16,7 +16,7 @@ class MatrixMisMatchException: public invalid_argument
 	MatrixMisMatchException();
 	string get_message();
 };
-get_message()
+MatrixMisMatchException::get_message()
 {
 	string x = "hello";
 	return x;
