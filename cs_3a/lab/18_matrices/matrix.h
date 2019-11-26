@@ -18,7 +18,7 @@ class MatrixMisMatchException: public invalid_argument
 			get_message(message) {}
 	
 		explicit MatrixMisMatchException(string message): 
-			get_message(message) {}
+			get_message(string message) {}
 		virtual ~MatrixMisMatchException() throw () {}
 		virtual const char* what() const throw ()
 		{
