@@ -14,6 +14,7 @@ class MatrixMisMatchException: public invalid_argument
 {
 	public:
 		MatrixMisMatchException();
+		string message;
 
 };
 
