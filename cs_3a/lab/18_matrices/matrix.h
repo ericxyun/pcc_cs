@@ -15,7 +15,7 @@ class MatrixMisMatchException: public invalid_argument
 	public:
 		MatrixMisMatchException();
 		MatrixMisMatchException(string message);
-		string *get_message(string message){return message;}
+		string *get_message(string message)const noexcept override {return message;}
 
 
 	private:
