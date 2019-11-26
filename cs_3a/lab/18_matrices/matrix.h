@@ -9,10 +9,21 @@ using namespace std;
 /**
    This class describes a row in a matrix.
 */
-class MatrixMisMatchException:public invalid_argument
+class MatrixMisMatchException: public invalid_argument
 {
-
+	public:
+		explicit MatrixMisMatchException(string message): msg_(message){}
+	private:
+		string msg_;
 };
+
+class MatrixIndexException: public out_of_range
+{
+	public:
+		explicit MatrixIndexException(string message): {}
+			
+};
+
 class Matrix; // Forward definition
 class MatrixRow
 {
