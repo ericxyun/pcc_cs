@@ -13,16 +13,6 @@ using namespace std;
 */
 class MatrixMisMatchException: public invalid_argument
 {
-	public:
-		explicit MatrixMisMatchException(const char *message):
-			msg_(message) {}
-	
-		explicit MatrixMisMatchException(const string &message): 
-			get_message(message) {}
-		virtual ~MatrixMisMatchException() throw () {}
-	protected:
-		std::string msg_;
-
 };
 
 
