@@ -16,6 +16,9 @@ class MatrixMisMatchException: public invalid_argument
 	MatrixMisMatchException();
 	string get_message();
 };
+MatrixMisMatchException::get_message()
+{
+}
 
 
 class Matrix; // Forward definition
