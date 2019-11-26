@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cassert>
+#include "matrix.cpp"
 
 using namespace std;
 
