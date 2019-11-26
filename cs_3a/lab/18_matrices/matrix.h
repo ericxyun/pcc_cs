@@ -71,7 +71,6 @@ public:
 	   for (int i = 0; i < (ROWS * COLUMNS); i++)
 	   {
 		   elements[i] = 0;
-		   cout << elements[i] << " ";
 	   }
    }
 
