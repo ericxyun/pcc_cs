@@ -14,12 +14,11 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	MatrixMisMatchException();
-	string get_message();
+	string get_message()
+	{
+		cout << "hello";
+	}
 };
-MatrixMisMatchException::get_message()
-{
-	string x = "hello";
-	return x;
 }
 
 
