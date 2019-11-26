@@ -83,7 +83,6 @@ public:
    */
    double& operator()(int i, int j)
    {
-	   return i * COLUMNS + j;
    }
 
 
