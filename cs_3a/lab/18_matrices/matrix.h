@@ -24,7 +24,7 @@ class MatrixMisMatchException: public invalid_argument
 		{
 			return get_message.c_str();
 		}
-		const*char get_message(string);
+		const *char* get_message(string);
 	protected:
 		string message;
 
