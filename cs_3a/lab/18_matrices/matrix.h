@@ -13,7 +13,7 @@ class MatrixMisMatchException: public invalid_argument
 {
 	public:
 		MatrixMisMatchException();
-		MatrixMisMatchException(string message): get_message(string message);
+		MatrixMisMatchException(string message): get_message(string message){};
 		string get_message();
 
 	private:
