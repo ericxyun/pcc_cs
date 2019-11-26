@@ -13,6 +13,7 @@ using namespace std;
 */
 class MatrixMisMatchException: public invalid_argument
 {
+	MatrixMisMatchException();
 };
 
 
