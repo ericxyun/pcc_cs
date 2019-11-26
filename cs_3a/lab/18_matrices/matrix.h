@@ -68,7 +68,7 @@ public:
    */
    Matrix()
    {
-	   for (int i = 0; i < ROW * COLUMNS; i++)
+	   for (int i = 0; i < (ROW * COLUMNS); i++)
 	   {
 		   elements[i] = 0;
 		   cout << elements[i] << " ";
