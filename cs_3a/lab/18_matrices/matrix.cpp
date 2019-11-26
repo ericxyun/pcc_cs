@@ -1,3 +1,3 @@
-Matrix::Matrix()
+int Matrix::Matrix()
 {
 }
