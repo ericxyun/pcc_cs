@@ -14,13 +14,17 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	public:
-		MatrixMisMatchException();
+		public MatrixMisMatchException(const char *message):
+			get_message(message) {}
+	
+		virtual ~MatrixMisMatchException() throw () {}
+		virtual const char* what() const throw ()
+		{
+			return get_message.c_str();
+		}
+
 };
 
-class MatrixIndexException: public out_of_range
-{
-			
-};
 
 class Matrix; // Forward definition
 class MatrixRow
