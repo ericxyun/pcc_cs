@@ -14,7 +14,8 @@ class MatrixMisMatchException: public invalid_argument
 {
 	public:
 		MatrixMisMatchException();
-		MatrixMisMatchException(string message): string get_message(message) {};
+		MatrixMisMatchException(string message): 
+			get_message(message) {};
 		string get_message();
 
 	private:
