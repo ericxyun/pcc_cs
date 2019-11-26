@@ -22,8 +22,6 @@ class MatrixMisMatchException: public invalid_argument
 
 class MatrixIndexException: public out_of_range
 {
-	public:
-		explicit MatrixIndexException(string message): {}
 			
 };
 
