@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <cassert>
-
+#include <cstdlib>
 using namespace std;
 
 /**
@@ -38,18 +38,7 @@ private:
 class ConstMatrixRow
 {
 public:
-   /**
-      Constructs a row with a given start and size.
-      @param m a pointer to the matrix
-      @param s the size of the row
-   */
    ConstMatrixRow(const Matrix* m, int s);
-
-   /**
-      Accesses a row element.
-      @param j the column index
-      @return a reference to the element with the given index
-   */
    double operator[](int j) const;
 
 private:
@@ -63,9 +52,6 @@ private:
 class Matrix
 {
 public:
-   /**
-      Constructs a matrix filled with zero elements.
-   */
    Matrix()
    {
 	   for (int i = 0; i < (ROWS * COLUMNS); i++)
@@ -74,42 +60,10 @@ public:
 	   }
    }
 
-   /**
-      Accesses a matrix element.
-      @param i the row index
-      @param j the column index
-      @return a reference to the element with the given indexes
-   */
    double& operator()(int i, int j);
-
-
-   /**
-      Accesses a matrix element.
-      @param i the row index
-      @param j the column index
-      @return the element with the given indexes
-   */
    double operator()(int i, int j) const;
-
-   /**
-      Accesses a matrix row.
-      @param i the row index
-      @return the row with the given index
-   */
    MatrixRow operator[](int i);   
-
-   /**
-      Accesses a matrix row.
-      @param i the row index
-      @return the row with the given index
-   */
    ConstMatrixRow operator[](int i) const;
-
-   /**
-      Computes the matrix sum.
-      @param right another matrix
-      @return the updated matrix
-   */
    Matrix& operator+=(const Matrix& right);
 
    static const int ROWS = 3;
@@ -119,41 +73,10 @@ private:
    double elements[ROWS * COLUMNS];
 };
 
-/**
-   Computes the matrix sum.
-   @param right another matrix
-   @return the sum of two matrices
-*/
-   Matrix operator+(const Matrix& left, const Matrix& right);
-
-/**
-   Computes the matrix product.
-   @param right another matrix
-   @return the product of two matrices
-*/
-   Matrix operator*(const Matrix& left, const Matrix& right);
-
-/**
-   Computes the scalar product of a scalar value and a matrix.
-   @param left a scalar value
-   @param right a matrix
-   @return the product of the given value and the given matrix
-*/
+Matrix operator+(const Matrix& left, const Matrix& right);
+Matrix operator*(const Matrix& left, const Matrix& right);
 Matrix operator*(double left, const Matrix& right);
-
-/**
-   Computes the scalar product of a matrix and a scalar value.
-   @param right a scalar value
-   @return the product of this matrix and the given value
-*/
 Matrix operator*(const Matrix& left, double right);
-
-/**
-   Prints a matrix to an output stream.
-   @param left an output stream
-   @param right a matrix
-   @return the given output stream
-*/
 ostream& operator<<(ostream& left, const Matrix& right);
 
 inline double& Matrix::operator()(int i, int j)
