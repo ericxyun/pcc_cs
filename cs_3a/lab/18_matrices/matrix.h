@@ -86,13 +86,16 @@ public:
 	   return i * COLUMNS + j;
    }
 
+
    /**
       Accesses a matrix element.
       @param i the row index
       @param j the column index
       @return the element with the given indexes
    */
-   double operator()(int i, int j) const;
+   double operator()(int i, int j) const
+   {
+   }
 
    /**
       Accesses a matrix row.
