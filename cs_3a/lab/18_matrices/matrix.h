@@ -81,7 +81,10 @@ public:
       @param j the column index
       @return a reference to the element with the given indexes
    */
-   double& operator()(int i, int j);
+   double& operator()(int i, int j)
+   {
+	   return i * COLUMNS + j;
+   }
 
    /**
       Accesses a matrix element.
