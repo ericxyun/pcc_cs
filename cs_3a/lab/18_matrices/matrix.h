@@ -160,6 +160,7 @@ ostream& operator<<(ostream& left, const Matrix& right);
 inline double& Matrix::operator()(int i, int j)
 {
    assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS);
+   cout << elements[i * COLUMNS + j];
    return elements[i * COLUMNS + j];
 }
 
