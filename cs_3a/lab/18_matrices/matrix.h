@@ -10,13 +10,13 @@ using namespace std;
 /**
    This class describes a row in a matrix.
 */
-class MatrixMisMatchException: public invalid_argument
+class MatrixMisMatchException: protected invalid_argument
 {
 	public:
 		MatrixMisMatchException();
 		string *get_message();
 	private:
-		string message_;
+		string message;
 
 };
 
