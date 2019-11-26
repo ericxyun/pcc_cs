@@ -16,9 +16,6 @@ class MatrixMisMatchException: public invalid_argument
 	public:
 		MatrixMisMatchException();
 };
-MatrixMisMatchException()
-{
-}
 
 class MatrixIndexException: public out_of_range
 {
