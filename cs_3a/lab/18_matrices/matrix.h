@@ -16,9 +16,6 @@ class MatrixMisMatchException: public invalid_argument
 		MatrixMisMatchException();
 		MatrixMisMatchException(string message);
 		string get_message(string message) noexcept override;
-		{
-			return message;
-		}
 
 
 	private:
