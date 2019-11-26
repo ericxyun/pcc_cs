@@ -10,7 +10,7 @@ using namespace std;
 /**
    This class describes a row in a matrix.
 */
-class MatrixMisMatchException: protected invalid_argument
+class MatrixMisMatchException: private invalid_argument
 {
 	public:
 		MatrixMisMatchException();
