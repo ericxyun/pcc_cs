@@ -21,7 +21,7 @@ class MatrixMisMatchException: public invalid_argument
 			get_message(message) {}
 		virtual ~MatrixMisMatchException() throw () {}
 	protected:
-		string message;
+		std::string message;
 
 };
 
