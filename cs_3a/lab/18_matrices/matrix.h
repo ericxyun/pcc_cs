@@ -17,12 +17,13 @@ class MatrixMisMatchException: public invalid_argument
 		explicit MatrixMisMatchException(const char *message):
 			get_message(message) {}
 	
+		explicit MatrixMisMatchException(const string &message): 
+			get_message(message) {}
 		virtual ~MatrixMisMatchException() throw () {}
 		virtual const char* what() const throw ()
 		{
 			return get_message.c_str();
 		}
-		const char *get_message(const char*message);
 	protected:
 		string message;
 
