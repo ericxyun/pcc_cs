@@ -14,14 +14,13 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	public:
-		explicit MatrixMisMatchException(string message);
+		MatrixMisMatchException();
 	private:
 		string message;
 
 };
-MatrixMisMatchException(string message)
+MatrixMisMatchException()
 {
-	message = "";
 }
 
 class MatrixIndexException: public out_of_range
