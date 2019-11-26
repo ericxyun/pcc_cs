@@ -95,6 +95,7 @@ public:
    */
    double operator()(int i, int j) const
    {
+	   return elements[i * COLUMNS + j];
    }
 
    /**
