@@ -13,7 +13,7 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	public:
-		MatrixMisMatchException(const string &message = ""): get_message(message) {};
+		MatrixMisMatchException(const string &message = ""): get_message(const message) {};
 		string get_message(string message);
 
 };
