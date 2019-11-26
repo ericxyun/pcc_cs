@@ -15,13 +15,13 @@ class MatrixMisMatchException: public invalid_argument
 {
 	public:
 		explicit MatrixMisMatchException(const char *message):
-			get_message(message) {}
+			msg_(message) {}
 	
 		explicit MatrixMisMatchException(const string &message): 
 			get_message(message) {}
 		virtual ~MatrixMisMatchException() throw () {}
 	protected:
-		std::string message;
+		std::string msg_;
 
 };
 
