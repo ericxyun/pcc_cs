@@ -14,7 +14,6 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	public:
-		void get_message(string);
 		explicit MatrixMisMatchException(const char *message):
 			get_message(message) {}
 	
@@ -25,6 +24,7 @@ class MatrixMisMatchException: public invalid_argument
 		{
 			return get_message.c_str();
 		}
+		string  get_message(string);
 	protected:
 		string message;
 
