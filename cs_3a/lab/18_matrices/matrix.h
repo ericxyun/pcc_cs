@@ -93,10 +93,10 @@ public:
       @param j the column index
       @return the element with the given indexes
    */
-   double operator()(int i, int j) const
-   {
-	   return elements[i * COLUMNS + j];
-   }
+   /* double operator()(int i, int j) const */
+   /* { */
+	   /* return elements[i * COLUMNS + j]; */
+   /* } */
 
    /**
       Accesses a matrix row.
