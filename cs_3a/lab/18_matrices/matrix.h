@@ -81,10 +81,7 @@ public:
       @param j the column index
       @return a reference to the element with the given indexes
    */
-   double& operator()(int i, int j)
-   {
-	   return elements[i * COLUMNS + j];
-   }
+   double& operator()(int i, int j);
 
 
    /**
@@ -93,10 +90,7 @@ public:
       @param j the column index
       @return the element with the given indexes
    */
-   /* double operator()(int i, int j) const */
-   /* { */
-	   /* return elements[i * COLUMNS + j]; */
-   /* } */
+   double operator()(int i, int j) const;
 
    /**
       Accesses a matrix row.
@@ -163,17 +157,17 @@ Matrix operator*(const Matrix& left, double right);
 */
 ostream& operator<<(ostream& left, const Matrix& right);
 
-/* inline double& Matrix::operator()(int i, int j) */
-/* { */
-/*    assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS); */
-/*    return elements[i * COLUMNS + j]; */
-/* } */
+inline double& Matrix::operator()(int i, int j)
+{
+   assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS);
+   return elements[i * COLUMNS + j];
+}
 
-/* inline double Matrix::operator()(int i, int j) const */
-/* { */
-/*    assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS); */
-/*    return elements[i * COLUMNS + j]; */
-/* } */
+inline double Matrix::operator()(int i, int j) const
+{
+   assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS);
+   return elements[i * COLUMNS + j];
+}
    
 inline MatrixRow Matrix::operator[](int i) 
 {
