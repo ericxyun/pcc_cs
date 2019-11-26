@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <cassert>
-#include "matrix.cpp"
 
 using namespace std;
 
@@ -67,7 +66,10 @@ public:
    /**
       Constructs a matrix filled with zero elements.
    */
-   Matrix();
+   Matrix()
+   {
+	   cout << "
+   }
 
    /**
       Accesses a matrix element.
