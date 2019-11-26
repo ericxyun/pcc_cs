@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cstdlib>
 #include <string>
+#include <stdexcept>
 using namespace std;
 
 /**
@@ -13,7 +14,7 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	public:
-		MatrixMisMatchException(const string &message = ""): get_message(const message) {};
+		MatrixMisMatchException(const string &message = ""): get_message(message) {};
 		string get_message(string message);
 
 };
