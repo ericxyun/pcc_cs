@@ -169,11 +169,11 @@ inline double& Matrix::operator()(int i, int j)
    return elements[i * COLUMNS + j];
 }
 
-inline double Matrix::operator()(int i, int j) const
-{
-   assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS);
-   return elements[i * COLUMNS + j];
-}
+/* inline double Matrix::operator()(int i, int j) const */
+/* { */
+/*    assert(0 <= i && i < ROWS && 0 <= j && j < COLUMNS); */
+/*    return elements[i * COLUMNS + j]; */
+/* } */
    
 inline MatrixRow Matrix::operator[](int i) 
 {
