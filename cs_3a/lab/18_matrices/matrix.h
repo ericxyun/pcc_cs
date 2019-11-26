@@ -12,9 +12,9 @@ using namespace std;
 class MatrixMisMatchException: public invalid_argument
 {
 	public:
-		explicit MatrixMisMatchException(string message): msg_(message){}
+		explicit MatrixMisMatchException(string message):{} 
 	private:
-		string msg_;
+		string message;
 };
 
 class MatrixIndexException: public out_of_range
