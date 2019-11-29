@@ -13,13 +13,16 @@ using namespace std;
 */
 class MatrixMisMatchException: public invalid_argument
 {
-	MatrixMisMatchException();
-	string get_message()
-	{
-		cout << "hello";
-	}
+	public:
+		MatrixMisMatchException(string message):invalid_argument(message)
+		{}
 };
-}
+
+class MatrixIndexException: public out_of_range
+{
+	public:
+		MatrixIndexException(string msg):out_of_range(msg) {};
+};
 
 
 class Matrix; // Forward definition
